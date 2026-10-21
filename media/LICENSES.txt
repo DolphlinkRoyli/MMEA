@@ -1,6 +1,6 @@
 Recorded reference footage — optimized website copies
 These recordings are not live government CCTV.
-Each complete clip was resized and re-encoded for browser delivery. No text overlays were added.
+Recordings were resized and re-encoded for browser delivery; the Langkawi clip is an excerpt as identified below. No text overlays were added.
 
 media/port-klang-2025-720p.mp4
 U.S. Navy video by Mass Communication Specialist Seaman Edward Jacome
@@ -25,4 +25,4 @@ media/langkawi-2016-720p.mp4
 Tommy Creation
 https://commons.wikimedia.org/wiki/File:DJI_Phantom_3_Pro_-_Langkawi_,Malaysia.webm
 CC BY 3.0 — https://creativecommons.org/licenses/by/3.0/
-Complete recording resized to at most 1280 × 720 and re-encoded as H.264/AAC. Aspect ratio and duration preserved. No overlays added.
+Continuous 20-second excerpt from 175.8–195.8 seconds of the 200.834-second source recording, re-encoded as 1280 × 720 H.264. Original frame content, aspect ratio and chronology preserved. No crop, stretch or overlays added.
