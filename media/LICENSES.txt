@@ -25,4 +25,4 @@ media/langkawi-2016-720p.mp4
 Tommy Creation
 https://commons.wikimedia.org/wiki/File:DJI_Phantom_3_Pro_-_Langkawi_,Malaysia.webm
 CC BY 3.0 — https://creativecommons.org/licenses/by/3.0/
-Continuous 20-second excerpt from 175.8–195.8 seconds of the 200.834-second source recording, re-encoded as 1280 × 720 H.264. Original frame content, aspect ratio and chronology preserved. No crop, stretch or overlays added.
+Continuous 20-second excerpt from 88–108 seconds of the 200.834-second source recording. Only empty baked-in black margins were removed using crop x=0, y=86, width=1280, height=550, conservatively preserving all active image pixels detected across all 601 source frames. Re-encoded as 1280 × 550 H.264. Original image geometry and chronology preserved; no stretch or overlays added.
