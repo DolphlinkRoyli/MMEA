@@ -863,6 +863,8 @@ button.status-help:hover{background:#eaf3fc;border-color:#1e5f99}
 #page-work #close-work{margin-top:12px;min-height:42px;flex-shrink:0}
 #page-work #review-role:focus-visible{outline:2px solid #0879d8;outline-offset:3px}
 
+#page-assets .table-surface td{padding-top:10px;padding-bottom:10px}
+
 /* Public source presentation: no inferred operational state. */
 body[data-source-mode=public] .page{min-height:0;overflow:hidden}
 body[data-source-mode=public] #workspace-main{visibility:hidden}
@@ -1836,6 +1838,7 @@ if (typeof module !== "undefined" && module.exports) module.exports = UI_TEXT;
  root.RealityGuard=RealityGuard;if(typeof module!=='undefined'&&module.exports)module.exports=RealityGuard;
 })(typeof globalThis!=='undefined'?globalThis:this);
 
+function displayUnit(unit){return unit==='C'?'°C':String(unit||'');}
 /* Presentation fixtures and data views only. Every fixture is synthetic; all
  * event, rule, transport and work transitions use the generic local engine.
  * Call seedPresentationData() once on a fresh engine while ready is false. */
@@ -1952,7 +1955,7 @@ function renderWorkspaceData(){
  const events=new Map(state.audit.filter(record=>record.event).map(record=>[record.eventId,record.event]));
  workspacePut('rules-evaluations','<div class="workspace-card-heading"><h2>'+esc(tr('Recent rule evaluations','Penilaian peraturan terkini'))+'</h2><span class="badge neutral">'+esc(selected)+'</span></div>'+(evaluations.length?'<div class="workspace-evaluations">'+evaluations.map(record=>{
   const event=events.get(record.eventId),r=record.rule;
-  return '<article><div><b>'+esc(event?event.value+' '+event.unit:tr('Observation','Pemerhatian'))+'</b><span class="badge '+(record.status==='exceeded'?'warning':'neutral')+'">'+esc(workspaceStatus(record.status))+'</span></div><p>'+esc(r?tr('Rule: ','Peraturan: ')+' > '+r.threshold+' '+r.unit:'')+'</p><small>'+esc(event?formatTime(event.observedAt):formatTime(record.timestamp))+' · '+esc(record.eventId)+'</small></article>';
+  return '<article><div><b>'+esc(event?event.value+' '+displayUnit(event.unit):tr('Observation','Pemerhatian'))+'</b><span class="badge '+(record.status==='exceeded'?'warning':'neutral')+'">'+esc(workspaceStatus(record.status))+'</span></div><p>'+esc(r?tr('Rule: ','Peraturan: ')+' > '+r.threshold+' '+displayUnit(r.unit):'')+'</p><small data-event-id="'+esc(record.eventId)+'">'+esc(event?formatTime(event.observedAt):formatTime(record.timestamp))+'</small></article>';
  }).join('')+'</div>':'<p class="page-note">'+esc(tr('No evaluation yet. Send a matching-unit observation.','Belum ada penilaian. Hantar pemerhatian dengan unit sepadan.'))+'</p>'));
 
  const sourceDocs=documents.export().documents;
@@ -2201,7 +2204,7 @@ function renderWorkJourney(){
  if(!engine)return;const issue=selectedAlert(),order=selectedOrder(),event=engine.state.latest[selected],rule=engine.getAssetRule(selected),fresh=realityGuard.getTelemetryState(selected).status==='fresh',matching=!!event&&event.unit===rule.unit,within=matching&&event.value<=rule.threshold,noted=!!order?.evidence.length,closed=order?.status==='closed',reviewer=$('review-role').value==='reviewer',eligible=noted&&fresh&&within&&reviewer;
  const current=!issue?0:!order?3:!noted?4:!fresh||!within?2:5;
  const cards=[
-  [tr('Alert received','Amaran diterima'),issue?issue.value+' '+issue.unit:tr('No alert','Tiada amaran'),!!issue,'activity','alert'],
+  [tr('Alert received','Amaran diterima'),issue?issue.value+' '+displayUnit(issue.unit):tr('No alert','Tiada amaran'),!!issue,'activity','alert'],
   [tr('Asset linked','Aset dipautkan'),selected,!!issue,assets.find(asset=>asset.id===selected)?.kind||'layers','asset'],
   [tr('Rule check','Semakan peraturan'),currentStatus(selected).text,!!event&&fresh&&within,'layers','rule'],
   [tr('Work order','Arahan kerja'),order?workspaceStatus(order.status):tr('Create work order','Cipta arahan kerja'),!!order,'file-text','work'],
@@ -2218,7 +2221,7 @@ function renderWorkJourney(){
 }
 function workJourneyAction(action){
  const issue=selectedAlert(),order=selectedOrder();
- if(action==='alert'){if(issue)openModal(tr('Received alert','Amaran diterima'),'<div class="work-alert-fact"><b>'+esc(issue.assetId)+'</b><strong>'+esc(issue.value+' '+issue.unit)+'</strong><span>'+tr('Above threshold ','Melebihi ambang ')+esc(issue.threshold+' '+issue.unit)+'</span></div><div class="modal-actions"><button onclick="closeModal()">'+tr('Return to workflow','Kembali ke aliran kerja')+'</button></div>');return;}
+ if(action==='alert'){if(issue)openModal(tr('Received alert','Amaran diterima'),'<div class="work-alert-fact"><b>'+esc(issue.assetId)+'</b><strong>'+esc(issue.value+' '+displayUnit(issue.unit))+'</strong><span>'+tr('Above threshold ','Melebihi ambang ')+esc(issue.threshold+' '+issue.unit)+'</span></div><div class="modal-actions"><button onclick="closeModal()">'+tr('Return to workflow','Kembali ke aliran kerja')+'</button></div>');return;}
  if(action==='asset'){assetDetail();return;}
  if(action==='rule'){decisionDetailsDialog();return;}
  if(action==='work'){if(!order)createWork();$('inspection-note').focus();return;}
@@ -2558,7 +2561,7 @@ function normalSignal(){if(assets.find(a=>a.id===selected)?.kind==='helicopter')
 function duplicateLast(){if(!lastEvent){toast(tr('Send an observation first.','Hantar pemerhatian dahulu.'));return;}safe(()=>{resultNotice(realityGuard.ingest(lastEvent));renderAll();});}
 function toggleNetwork(){safe(()=>{engine.setConnected(!engine.state.connected);renderAll();toast(engine.state.connected?tr('Local link restored. Buffered events replayed through validation.','Pautan setempat dipulihkan. Peristiwa penimbal dihantar semula melalui pengesahan.'):tr('Local link interrupted. New observations will queue in memory.','Pautan setempat diputuskan. Pemerhatian baharu akan beratur dalam memori.'));});}
 function renderComms(){renderCommunicationExperience();}
-function renderWork(){if(!engine)return;const filter=$('work-filter').value||'all',rows=engine.state.alerts.filter(a=>filter==='all'||a.status===filter).slice().reverse();$('issue-table').innerHTML=rows.length?rows.map(a=>'<tr'+(a.alertId===selectedAlert()?.alertId?' class="current"':'')+'><td><strong>'+esc(a.assetId)+'</strong><small>'+esc(a.alertId.slice(-9))+'</small></td><td>'+esc(a.value)+' '+esc(a.unit)+' &gt; '+esc(a.threshold)+'</td><td>'+badge({cls:a.status==='closed'?'good':'warning',text:a.status==='closed'?t('closed'):t('review')})+'</td><td><button onclick="openIssue('+arg(a.alertId)+')">'+tr('Review','Semak')+'</button></td></tr>').join(''):'<tr><td colspan="4" class="empty-row">'+tr('No issues. Send a signal above its rule to test the workflow.','Tiada isu. Hantar isyarat melebihi ambangnya untuk menguji aliran kerja.')+'</td></tr>';const a=selectedAlert(),o=selectedOrder();$('work-summary').innerHTML='<div class="issue-heading"><span class="muted">'+esc(selected)+'</span><h2>'+esc(a?(a.status==='closed'?tr('Closed with evidence','Ditutup dengan bukti'):tr('Inspection required','Pemeriksaan diperlukan')):tr('No issue selected','Tiada isu dipilih'))+'</h2><p>'+esc(a?a.value+' '+a.unit+' > '+a.threshold+' '+a.unit:tr('Choose an issue from the queue.','Pilih isu daripada baris gilir.'))+'</p>'+(o?'<div class="muted">'+esc(o.orderId)+'</div>':'')+'</div>';$('work-progress').innerHTML=[tr('Work order','Arahan kerja'),tr('Evidence','Bukti'),tr('Review','Semakan')].map((label,i)=>'<span class="'+((i===0?!!o:i===1?!!o?.evidence.length:o?.status==='closed')?'done':'')+'">'+label+'</span>').join('');$('create-work').disabled=!a||a.status==='closed'||!!o;$('record-inspection').disabled=!o||o.status==='closed';$('close-work').disabled=!o||o.status==='closed';}
+function renderWork(){if(!engine)return;const filter=$('work-filter').value||'all',rows=engine.state.alerts.filter(a=>filter==='all'||a.status===filter).slice().reverse();$('issue-table').innerHTML=rows.length?rows.map(a=>'<tr'+(a.alertId===selectedAlert()?.alertId?' class="current"':'')+'><td><strong>'+esc(a.assetId)+'</strong><small>'+esc(formatTime(a.createdAt))+'</small></td><td>'+esc(a.value)+' '+esc(displayUnit(a.unit))+' &gt; '+esc(a.threshold)+' '+esc(displayUnit(a.unit))+'</td><td>'+badge({cls:a.status==='closed'?'good':'warning',text:a.status==='closed'?t('closed'):t('review')})+'</td><td><button onclick="openIssue('+arg(a.alertId)+')">'+tr('Open case','Buka kes')+'</button></td></tr>').join(''):'<tr><td colspan="4" class="empty-row">'+tr('No issues. Send a signal above its rule to test the workflow.','Tiada isu. Hantar isyarat melebihi ambangnya untuk menguji aliran kerja.')+'</td></tr>';const a=selectedAlert(),o=selectedOrder();$('work-summary').innerHTML='<div class="issue-heading"><span class="muted">'+esc(selected)+'</span><h2>'+esc(a?(a.status==='closed'?tr('Closed with evidence','Ditutup dengan bukti'):tr('Inspection required','Pemeriksaan diperlukan')):tr('No issue selected','Tiada isu dipilih'))+'</h2><p>'+esc(a?a.value+' '+displayUnit(a.unit)+' > '+a.threshold+' '+displayUnit(a.unit):tr('Choose an issue from the queue.','Pilih isu daripada baris gilir.'))+'</p>'+(o?'<div class="muted">'+esc(o.orderId)+'</div>':'')+'</div>';$('work-progress').innerHTML=[tr('Work order','Arahan kerja'),tr('Evidence','Bukti'),tr('Review','Semakan')].map((label,i)=>'<span class="'+((i===0?!!o:i===1?!!o?.evidence.length:o?.status==='closed')?'done':'')+'">'+label+'</span>').join('');$('create-work').disabled=!a||a.status==='closed'||!!o;$('record-inspection').disabled=!o||o.status==='closed';$('close-work').disabled=!o||o.status==='closed';}
 function openIssue(alertId){const issue=engine.state.alerts.find(a=>a.alertId===alertId);if(!issue)return;chooseAsset(issue.assetId,false);selectedIssueId=issue.alertId;navigate('work');}
 function createWork(){safe(()=>{const a=selectedAlert();if(!a)throw new Error(tr('Choose an active issue first.','Pilih isu aktif dahulu.'));engine.createOrder(a.alertId);renderAll();toast(tr('Work order created. Record the inspection findings.','Arahan kerja dicipta. Rekod dapatan pemeriksaan.'));});}
 function recordInspection(){safe(()=>{const o=selectedOrder();if(!o)throw new Error(tr('Create a work order first.','Cipta arahan kerja dahulu.'));engine.inspect(o.orderId,$('inspection-note').value);renderAll();toast(tr('Inspection evidence recorded.','Bukti pemeriksaan direkodkan.'));});}
@@ -2641,7 +2644,7 @@ function updateMotion(dt=0){
  $('ticker-detail').textContent=(latest?latest.value+' '+latest.unit+' · ':'')+(selectedMotion?selectedStatus:latest?currentStatus(selected).text:tr('Awaiting next observation','Menunggu pemerhatian seterusnya'));
  $('ticker-event').textContent=(selectedMotion?.eventId||latest?.eventId||'').slice(-13);
  const current=s.latest[selected],rule=engine.getAssetRule(selected),issue=s.alerts.filter(q=>q.assetId===selected).slice(-1)[0],order=issue?.orderId?s.orders.find(q=>q.orderId===issue.orderId):null;
- $('flow-source').textContent=current?current.value+' '+current.unit:tr('Awaiting source','Menunggu sumber');
+ $('flow-source').textContent=current?current.value+' '+displayUnit(current.unit):tr('Awaiting source','Menunggu sumber');
  $('flow-comms').textContent=s.queue.some(q=>q.assetId===selected)?tr('Buffered locally','Ditimbal setempat'):current?tr('Accepted locally','Diterima setempat'):tr('No delivery yet','Belum dihantar');
  $('flow-platform').textContent=order?workspaceStatus(order.status):issue?tr('Issue linked locally','Isu dipaut setempat'):tr('Asset linked locally','Aset dipaut setempat');
  $('flow-rule').textContent=current&&realityGuard.getTelemetryState(selected).status!=='fresh'?currentStatus(selected).text:current?current.unit!==rule.unit?tr('Unit mismatch','Unit tidak sepadan'):current.value+' '+(current.value>rule.threshold?'>':'≤')+' '+rule.threshold+' '+rule.unit+' · '+tr(current.value>rule.threshold?'Review':'Within rule',current.value>rule.threshold?'Semak':'Dalam ambang'):tr('Awaiting evaluation','Menunggu penilaian');
