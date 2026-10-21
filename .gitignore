@@ -1,0 +1,10 @@
+*.pdf
+*.pptx
+*.docx
+*.xlsx
+*.zip
+.env*
+*.pem
+*.key
+work/
+outputs/
