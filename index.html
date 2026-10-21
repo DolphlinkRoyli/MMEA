@@ -856,6 +856,13 @@ button.status-help:hover{background:#eaf3fc;border-color:#1e5f99}
 #page-comms th{font-size:14px;line-height:1.4;padding:11px 15px}#page-comms td{font-size:14px;padding:11px 15px;line-height:1.4}
 #page-comms td:last-child{color:#47617b}#page-comms .badge{font-size:13px;line-height:1.4}
 
+/* Keep workflow actions clear of native focus outlines and adjacent controls. */
+#page-work #record-inspection{margin-top:8px;min-height:42px}
+#page-work label[for="review-role"]{margin-top:14px;margin-bottom:7px}
+#page-work #review-role{min-height:42px;height:42px;margin:0;flex-shrink:0}
+#page-work #close-work{margin-top:12px;min-height:42px;flex-shrink:0}
+#page-work #review-role:focus-visible{outline:2px solid #0879d8;outline-offset:3px}
+
 /* Public source presentation: no inferred operational state. */
 body[data-source-mode=public] .page{min-height:0;overflow:hidden}
 body[data-source-mode=public] #workspace-main{visibility:hidden}
