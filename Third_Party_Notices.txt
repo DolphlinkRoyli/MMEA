@@ -592,7 +592,7 @@ https://www.openstreetmap.org/copyright
 Internet access is required. Synthetic asset overlays are separate from geographic basemap data.
 
 
-Direct reference recordings — embedded unmodified, not live agency CCTV
+Direct reference recordings — resized and re-encoded for efficient playback; not live agency CCTV
 Ship arrival at Port Klang
 U.S. Navy video by Mass Communication Specialist Seaman Edward Jacome · 2025-05-21
 https://commons.wikimedia.org/wiki/File:250521-N-ET289-1001_(964739).webm
