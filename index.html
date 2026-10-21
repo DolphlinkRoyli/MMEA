@@ -865,6 +865,11 @@ button.status-help:hover{background:#eaf3fc;border-color:#1e5f99}
 
 #page-assets .table-surface td{padding-top:10px;padding-bottom:10px}
 
+#signal-journey em[data-state=alert]{color:#b5273e}
+#signal-journey em[data-state=warning]{color:#855b0b}
+#signal-journey em[data-state=neutral]{color:#47617b}
+#signal-journey em[data-state=good]{color:#087440}
+
 /* Public source presentation: no inferred operational state. */
 body[data-source-mode=public] .page{min-height:0;overflow:hidden}
 body[data-source-mode=public] #workspace-main{visibility:hidden}
@@ -2647,7 +2652,11 @@ function updateMotion(dt=0){
  $('flow-source').textContent=current?current.value+' '+displayUnit(current.unit):tr('Awaiting source','Menunggu sumber');
  $('flow-comms').textContent=s.queue.some(q=>q.assetId===selected)?tr('Buffered locally','Ditimbal setempat'):current?tr('Accepted locally','Diterima setempat'):tr('No delivery yet','Belum dihantar');
  $('flow-platform').textContent=order?workspaceStatus(order.status):issue?tr('Issue linked locally','Isu dipaut setempat'):tr('Asset linked locally','Aset dipaut setempat');
- $('flow-rule').textContent=current&&realityGuard.getTelemetryState(selected).status!=='fresh'?currentStatus(selected).text:current?current.unit!==rule.unit?tr('Unit mismatch','Unit tidak sepadan'):current.value+' '+(current.value>rule.threshold?'>':'≤')+' '+rule.threshold+' '+rule.unit+' · '+tr(current.value>rule.threshold?'Review':'Within rule',current.value>rule.threshold?'Semak':'Dalam ambang'):tr('Awaiting evaluation','Menunggu penilaian');
+ $('flow-rule').textContent=current&&realityGuard.getTelemetryState(selected).status!=='fresh'?currentStatus(selected).text:current?current.unit!==rule.unit?tr('Unit mismatch','Unit tidak sepadan'):current.value+' '+(current.value>rule.threshold?'>':'≤')+' '+rule.threshold+' '+displayUnit(rule.unit)+' · '+tr(current.value>rule.threshold?'Review':'Within rule',current.value>rule.threshold?'Semak':'Dalam ambang'):tr('Awaiting evaluation','Menunggu penilaian');
+ $('flow-source').dataset.state=currentStatus(selected).cls;
+ $('flow-rule').dataset.state=currentStatus(selected).cls;
+ $('flow-comms').dataset.state=s.queue.some(q=>q.assetId===selected)?'warning':'good';
+ $('flow-platform').dataset.state=order?.status==='closed'?'good':issue?.status==='active'?'warning':'neutral';
  const journey=$('signal-journey');journey.style.setProperty('--flow-progress',(progress*100).toFixed(2)+'%');
  journey.dataset.outcome=item?.status==='buffered'?'buffered':item?.rule==='exceeded'?'alert':'normal';
  document.querySelectorAll('.journey button').forEach((el,i)=>{el.classList.toggle('flow-active',i===stage);el.classList.toggle('flow-done',item!==null&&i<stage);});
