@@ -2432,7 +2432,7 @@ body[data-layout=desktop] #app-frame .screen-pager{padding-right:232px}
 .bot-hub-head>div{gap:16px}
 @media(max-width:767px){.bot-hub-head img{width:72px;height:72px}.bot-hub-head>div{gap:12px}}
 /* Responsive floating assistant: size follows both viewport width and height. */
-:root{--assistant-size:clamp(96px,min(8.75vw,15.4dvh),168px);--assistant-edge:clamp(12px,1.25vw,24px);--assistant-bottom:max(8px,env(safe-area-inset-bottom));--assistant-label:30px}
+:root{--assistant-size:clamp(64px,min(5.5vw,10dvh),96px);--assistant-edge:clamp(12px,1.25vw,24px);--assistant-bottom:max(8px,env(safe-area-inset-bottom));--assistant-label:26px}
 #bot-hub{right:var(--assistant-edge);bottom:var(--assistant-bottom)}
 #bot-hub-launcher{width:calc(var(--assistant-size) + 16px);min-width:0;height:calc(var(--assistant-size) + var(--assistant-label))}
 #bot-hub-launcher img{width:var(--assistant-size);height:var(--assistant-size)}
@@ -2442,8 +2442,8 @@ body[data-layout=desktop] #app-frame .screen-pager{padding-right:232px}
 @keyframes bot-scan{0%,15%{transform:translateY(0);opacity:0}25%{opacity:.6}65%{transform:translateY(calc(var(--assistant-size) * .78));opacity:.4}75%,100%{transform:translateY(calc(var(--assistant-size) * .78));opacity:0}}
 #bot-hub-panel{width:min(620px,calc(100vw - var(--assistant-edge) * 2));max-width:none;max-height:calc(100dvh - var(--assistant-size) - var(--assistant-label) - var(--assistant-bottom) - 24px);overscroll-behavior:contain}
 body[data-layout=desktop] #app-frame .screen-pager{padding-right:calc(var(--assistant-size) + 32px)}
-@media(max-width:767px){:root{--assistant-size:clamp(80px,min(24vw,14dvh),104px);--assistant-bottom:calc(68px + env(safe-area-inset-bottom));--assistant-edge:12px}}
-@media(max-height:500px){:root{--assistant-size:clamp(72px,20dvh,100px);--assistant-bottom:max(8px,env(safe-area-inset-bottom))}#bot-hub-panel{position:fixed;top:12px;bottom:12px;right:calc(var(--assistant-size) + 36px);width:min(620px,calc(100vw - var(--assistant-size) - 60px));max-height:none;margin:0}.bot-hub-head{padding:10px 14px}.bot-hub-head img{width:52px;height:52px}}
+@media(max-width:767px){:root{--assistant-size:clamp(60px,min(18vw,10dvh),72px);--assistant-bottom:calc(68px + env(safe-area-inset-bottom));--assistant-edge:12px}}
+@media(max-height:500px){:root{--assistant-size:clamp(56px,15dvh,72px);--assistant-bottom:max(8px,env(safe-area-inset-bottom))}#bot-hub-panel{position:fixed;top:12px;bottom:12px;right:calc(var(--assistant-size) + 36px);width:min(620px,calc(100vw - var(--assistant-size) - 60px));max-height:none;margin:0}.bot-hub-head{padding:10px 14px}.bot-hub-head img{width:52px;height:52px}}
 #bot-hub-panel{box-sizing:border-box;width:min(620px,calc(100vw - var(--assistant-edge) * 2 - 20px))}
 @media(max-height:500px){#bot-hub-panel{width:min(620px,calc(100vw - var(--assistant-size) - 60px))}}
 /* A raised paw greets the visitor; the face and body stay still. */
@@ -2467,7 +2467,7 @@ body[data-layout=desktop] #app-frame .screen-pager{padding-right:calc(var(--assi
 @media(prefers-reduced-motion:reduce){#bot-hub-launcher .bot-greeting>.bot-waving-paw{animation:none;transform:rotate(-12deg);will-change:auto}}
 
 /* Compact floating mascot; keep the opened catalogue at its readable size. */
-#bot-hub-launcher>span{font-size:13px;line-height:18px;padding:4px 12px}
+#bot-hub-launcher>span{font-size:12px;line-height:16px;padding:3px 8px}
 
 /* Government presentation theme: navy ink and white surfaces.
    Map imagery, video and semantic icons retain their native colours. */
