@@ -5473,7 +5473,7 @@ const active=()=>typeof engine!=='undefined'&&engine?engine.state.alerts.filter(
 function render(){if(!bar)return;const rows=active();if(index>=rows.length)index=0;bar.hidden=!rows.length;if(!rows.length)return;const a=rows[index],ms=document.documentElement.lang==='ms';
  const label=ms?'Amaran':'Alerts',profile=profiles[a.assetId],name=profile?(ms?profile.labelMs:profile.labelEn):'';
  const asset=assets.find(x=>x.id===a.assetId),pos=realityGuard?.getAcceptedPosition(a.assetId);
- const geo=Number.isFinite(pos?.lat)&&Number.isFinite(pos?.lon)?pos.lat.toFixed(4)+', '+pos.lon.toFixed(4):ms?'Tiada kedudukan':'No position';
+ const geo=Number.isFinite(pos?.lat)&&Number.isFinite(pos?.lon)?Math.abs(pos.lat).toFixed(4)+'° '+(pos.lat<0?'S':'N')+' · '+Math.abs(pos.lon).toFixed(4)+'° '+(pos.lon<0?'W':'E'):ms?'Tiada kedudukan':'No position';
  const signature=[geo,pos?.observedAt,a.alertId,a.value,a.threshold,rows.length,ms,paused,index].join('|');if(signature===lastSignature)return;lastSignature=signature;
  bar.querySelector('.map-alert-count span').textContent=rows.length+' '+label;
  bar.querySelector('.map-alert-copy b').textContent=a.assetId.replace(/^DEMO-/,'')+' · '+(asset?.name||'');
