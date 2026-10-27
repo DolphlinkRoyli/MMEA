@@ -30,18 +30,19 @@ Continuous 20-second excerpt from 88â€“108 seconds of the 200.834-second source 
 vessel-bow-recorded.mp4
 LayG Traveller
 https://www.pexels.com/video/the-bow-of-a-boat-in-the-ocean-20237990/
-Pexels License — https://www.pexels.com/license/
+Pexels License - https://www.pexels.com/license/
 Real recorded footage. Full 72.07-second source recording, original chronology and playback speed preserved. Re-encoded to silent H.264 1280x720 fast-start MP4 for website delivery; no generated frames or burned-in text. Virtual demonstration camera assignment, not an APMM camera recording. No endorsement is implied.
 
 vessel-aft-recorded.mp4
 The Element
 https://www.pexels.com/video/wake-produce-by-a-motor-boat-in-the-sea-3184535/
-Pexels License — https://www.pexels.com/license/
+Pexels License - https://www.pexels.com/license/
 Real recorded footage. Full 42.77-second source recording, original chronology and playback speed preserved. Re-encoded to silent H.264 1280x720 fast-start MP4 for website delivery; no generated frames or burned-in text. Virtual demonstration camera assignment, not an APMM camera recording. No endorsement is implied.
 
 vessel-port-recorded.mp4
 LayG Traveller
 https://www.pexels.com/video/the-view-from-the-back-of-a-boat-on-a-lake-20237998/
-Pexels License — https://www.pexels.com/license/
+Pexels License - https://www.pexels.com/license/
 Real recorded footage. Full 50.97-second source recording, original chronology and playback speed preserved. Re-encoded to silent H.264 1280x720 fast-start MP4 for website delivery; no generated frames or burned-in text. Virtual demonstration camera assignment, not an APMM camera recording. No endorsement is implied.
 
+Multi-camera preview variants: vessel-bow-preview.mp4, vessel-aft-preview.mp4, vessel-port-preview.mp4. Same corresponding recorded sources and Pexels License as above; full duration and chronology retained, encoded at 640x360, 20fps, capped 300kbps, silent H.264 fast-start. The current visible grid uses these lightweight variants; expanded single view uses the 720p recording.

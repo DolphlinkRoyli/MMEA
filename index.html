@@ -1557,6 +1557,85 @@ body[data-source-mode=public] #page-comms,body[data-source-mode=public] #page-wo
 }
 @media(prefers-reduced-motion:reduce){.slack-working:before{animation:none}}
 
+/* Captions sit below the real recorded video frames; no labels cover footage. */
+.vessel-multiview-panel[hidden],.vessel-multiview-grid[hidden],.vessel-multiview-pager[hidden]{display:none!important}
+.vessel-multiview-panel{min-width:0;flex:none;background:#fff;border-top:1px solid #e1e9f0}
+.vessel-multiview-controls{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 9px;min-height:40px;flex:none}
+.vessel-multiview-title{min-width:0;display:flex;align-items:baseline;gap:7px;flex-wrap:wrap}.vessel-multiview-title>b{font-size:12px;line-height:1.2;color:#234f71}.vessel-multiview-title>small{font-size:9px;color:#6a7e8f;line-height:1.2}
+.vessel-multiview-toggle{display:flex;gap:2px;border:1px solid #cbdce8;border-radius:6px;padding:2px;background:#f6f9fc;flex:none}
+.vessel-multiview-toggle>button{font-size:11px;line-height:1.2;min-height:27px;min-width:45px;padding:5px 7px;border:0;background:transparent;color:#3b6685;justify-content:center;border-radius:4px;white-space:nowrap}
+.vessel-multiview-toggle>button.is-active{background:#17649b;color:#fff}.vessel-multiview-toggle>button:disabled{opacity:.4;cursor:not-allowed}
+.vessel-multiview-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;padding:0 7px 6px;min-width:0;min-height:0;align-content:start}
+.vessel-multi-tile{display:flex;flex-direction:column;min-width:0;min-height:0;border:1px solid #d2e1ec;border-radius:5px;overflow:hidden;background:#fff}
+.vessel-multi-screen{position:relative;display:block;width:100%;aspect-ratio:16/9;min-height:0;flex:none;background:#0b1118;overflow:hidden}
+.vessel-multi-screen>video{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0b1118;border:0;margin:0;border-radius:0}
+.vessel-multi-caption{display:flex;align-items:center;justify-content:space-between;gap:5px;min-height:28px;padding:3px 6px;background:#fff;flex:none}
+.vessel-multi-expand{display:flex;align-items:center;justify-content:space-between;gap:5px;min-width:0;min-height:22px;flex:1;padding:2px 0;border:0;border-radius:0;background:#fff;color:#244f70;text-align:left}
+.vessel-multi-expand>b{font-size:11px;font-weight:600;line-height:1.2;overflow-wrap:anywhere}.vessel-multi-expand>span{font-size:14px;color:#377cae;flex:none}
+.vessel-multi-state{font-size:8px;line-height:1.2;color:#617d8e;flex:none;max-width:65px;text-align:right}.vessel-multi-tile[data-playback=error] .vessel-multi-state{color:#a34d32}.vessel-multi-tile[data-playback=playing] .vessel-multi-state{color:#347454}
+.vessel-multiview-pager{display:flex;align-items:center;justify-content:space-between;gap:7px;padding:0 8px 6px;min-height:24px;font-size:10px;color:#61788a;flex:none}
+.vessel-multiview-pager>button{font-size:10px;min-height:24px;padding:3px 6px;background:#f2f7fb;color:#315f82;border:0;white-space:nowrap}.vessel-multiview-pager>button:disabled{opacity:.35}
+.vessel-multiview-pager[data-paginated=false]{justify-content:center;min-height:17px;padding-bottom:5px}.vessel-multiview-pager[data-paginated=false]>button{display:none}
+#page-overview[data-vessel-cameras=true][data-multi-view=true] .camera-video-display,#page-overview[data-vessel-cameras=true][data-multi-view=true] .camera-video-meta{display:none!important}
+#page-overview[data-vessel-cameras=true][data-multi-view=true] #camera-player{display:none!important}
+#page-overview[data-vessel-cameras=true][data-multi-view=true] #camera-tabs{display:none!important}
+#page-overview[data-vessel-cameras=true][data-multi-view=true] .camera-media{display:flex!important;flex-direction:column}
+#page-overview[data-vessel-cameras=true][data-multi-view=true] .camera-media-heading,#page-overview[data-vessel-cameras=true][data-multi-view=true] .vessel-camera-fit{display:none!important}
+#page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=overview] .camera-tabs,#page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=overview] .camera-media-heading{display:none!important}
+#page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=overview] .vessel-multiview-title>small{display:none}
+#page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=overview] .vessel-camera-fit{display:none}
+#page-overview[data-vessel-cameras=true][data-command-view=camera] .vessel-multiview-panel[data-mode=single]{flex:none}
+@media(min-width:768px){
+ #page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=overview] .vessel-multiview-grid{width:calc(100% - 30px);margin-inline:auto;gap:4px;padding:0 0 4px}
+ #page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=overview] .vessel-multi-caption{min-height:22px;padding:2px 5px}
+ #page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=overview] .vessel-multi-state{display:none}
+ #page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=overview] .vessel-multiview-controls{min-height:34px;padding:4px 8px}
+ #page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=overview] .vessel-multiview-pager[data-paginated=false]{min-height:14px;padding-bottom:3px}
+ #page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=overview] .vessel-camera-footer{min-height:30px;padding:4px 8px}
+ #page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=camera] .overview-grid{grid-template-rows:42px minmax(0,1fr) 74px 96px}
+ #page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=camera] .camera-tabs{display:none!important}
+ #page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=camera] .map-surface{grid-area:2/1/3/2}
+ #page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=camera] .camera-media{grid-area:2/2/3/3}
+ #page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=camera] .location-focus{grid-area:3/1/4/3}
+ #page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=camera] .flow-section{grid-area:4/1/5/3}
+ #page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=camera] .vessel-multiview-panel{display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden}
+ #page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=camera] .vessel-multiview-panel{container-type:size}
+ #page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=camera] .vessel-multiview-grid{flex:1;min-height:0;align-content:center;grid-auto-rows:minmax(0,1fr)}
+ #page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=camera] .vessel-multi-tile{justify-content:center;border:0;background:#f2f6fa}
+ #page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=camera] .vessel-multi-screen{width:min(100%,max(0px,calc((100cqh - 124px)*.8888889)));max-height:none;flex:none;aspect-ratio:16/9;height:auto;margin-inline:auto;background:#fff}
+ #page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=camera] .vessel-multiview-grid[data-count="2"] .vessel-multi-screen{width:min(100%,max(0px,calc((100cqh - 91px)*1.7777778)))}
+ #page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=camera] .vessel-multi-caption{background:#fff}
+ #page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=camera] .vessel-multiview-title>small{display:none}
+}
+@media(max-width:767px),(max-width:1000px) and (max-height:500px){
+ #page-overview[data-vessel-cameras=true] .vessel-multiview-panel{display:block;flex:none;height:auto;min-height:0;overflow:visible}
+ #page-overview[data-vessel-cameras=true][data-multi-view=true] .camera-media{display:flex!important;flex-direction:column;height:auto;max-height:none;width:100%;margin:0 0 17px}
+ #page-overview[data-vessel-cameras=true][data-multi-view=true] .vessel-multiview-controls{padding:8px;min-height:45px}.vessel-multiview-title>b{font-size:13px}.vessel-multiview-title>small{display:none}
+ .vessel-multiview-toggle>button{font-size:12px;min-height:32px;padding:6px 8px}.vessel-multiview-grid{gap:6px;padding:0 6px 6px;grid-auto-rows:auto;align-content:start}
+ .vessel-multi-screen{aspect-ratio:16/9;width:100%;max-height:none;flex:none}.vessel-multi-caption{min-height:34px;padding:4px 6px;flex-wrap:wrap;gap:2px 4px}.vessel-multi-expand{min-height:26px}.vessel-multi-expand>b{font-size:12px}.vessel-multi-state{font-size:9px;max-width:none;text-align:left}
+ #page-overview[data-multi-view=true] .vessel-multi-state{display:none}
+ #page-overview[data-multi-view=true] .vessel-multi-caption{min-height:38px}
+ #page-overview[data-multi-view=true] .vessel-multi-expand>b{min-width:0;white-space:normal;overflow-wrap:normal;word-break:normal}
+ .vessel-multiview-pager{font-size:11px;min-height:27px;padding:3px 8px 8px}.vessel-multiview-pager>button{font-size:11px;min-height:30px}
+ #page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=camera] .camera-media{width:calc(100% - 32px);margin:0 16px 18px}
+ #page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=camera] .vessel-multiview-panel{container-type:normal}
+ #page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=camera] .vessel-multi-screen,#page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=camera] .vessel-multiview-grid[data-count="2"] .vessel-multi-screen{width:100%;height:auto;aspect-ratio:16/9;max-height:none}
+}
+
+#map-basemap-status[data-map-information=true] #map-source-credit{display:none!important}
+.map-information-disclosure{position:relative;display:flex;align-items:center;justify-content:center;flex:none;overflow:visible}
+.map-information-toggle{display:flex;align-items:center;justify-content:center;width:30px;height:30px;min-width:30px;min-height:30px;padding:0;border:1px solid #c5d5e0;border-radius:7px;background:#fff;color:#365d79;font-family:Georgia,serif;font-size:20px;font-weight:700;line-height:1;box-shadow:0 1px 5px #284d671a;cursor:pointer}
+.map-information-toggle:focus-visible,.map-information-close:focus-visible{outline:3px solid #71a9d4;outline-offset:2px}
+.map-information-panel[hidden]{display:none!important}
+.map-information-panel{position:absolute;right:0;bottom:38px;z-index:15;width:295px;max-width:calc(100vw - 40px);padding:11px 12px;background:#fff;border:1px solid #c7d9e6;border-radius:8px;box-shadow:0 5px 20px #24465f25;color:#2f536d;text-align:left}
+.map-information-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}.map-information-heading>b{font-size:13px;line-height:1.3;color:#234b68}.map-information-close{display:flex;align-items:center;justify-content:center;width:25px;height:25px;min-height:25px;padding:0;border:0;border-radius:4px;background:#f0f5f9;color:#55758b;font-size:20px;line-height:1}
+.map-information-links{font-size:12px;line-height:1.7;white-space:normal}.map-information-links a{color:#245f88;text-decoration:underline;text-underline-offset:2px}.map-information-links a:focus-visible{outline:2px solid #71a9d4;outline-offset:2px;border-radius:2px}
+#map-basemap-status[data-map-information=true][data-map-state=ready]{padding:0;background:transparent;border:0;box-shadow:none;min-height:30px;overflow:visible}
+@media(max-width:767px),(max-width:1000px) and (max-height:500px){
+ .map-information-toggle{width:36px;height:36px;min-width:36px;min-height:36px;font-size:22px;border-radius:8px}
+ .map-information-panel{bottom:44px;width:270px;max-width:calc(100vw - 54px);padding:12px}.map-information-heading>b{font-size:14px}.map-information-close{width:31px;height:31px;min-height:31px;font-size:23px}.map-information-links{font-size:13px;line-height:1.75}
+}
+
 </style></head><body data-source-mode="demo"><div id="stage"><div id="app-frame">
 <header><div class="identity"><a class="provider-brand" href="https://www.talktidetech.com/" target="_blank" rel="noopener" aria-label="Talktide — solution provider"><span data-t="solutionBy">Solution by</span><img src="data:image/webp;base64,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" width="145" height="35" alt="Talktide"></a><div class="customer-identity"><b>MMEA / APMM</b><small data-t="agencyName">Malaysian Maritime Enforcement Agency</small></div></div><div class="header-context"><span data-t="productName">Integrated asset monitoring</span><b id="header-route" role="heading" aria-level="1">Overview</b><div id="header-summary" class="header-summary"></div></div><div class="header-tools"><span class="data-context" data-t="demonstration">Demo</span><div class="language"><button id="lang-en" onclick="setLang('en')">EN</button><button id="lang-ms" onclick="setLang('ms')">BM</button></div><button id="scale-fill" onclick="setScale('fill')" data-t="fill">Fill</button><button id="scale-fit" onclick="setScale('fit')" data-t="fit">Fit</button><button id="scale-native" onclick="setScale('native')">1:1</button><button id="presentation-fullscreen" onclick="fullscreen()" data-t="fullScreen">Full screen</button><button class="icon-button" onclick="openHelp()" aria-label="Scope and help"><span data-icon="circle-alert"></span></button></div></header>
 <div class="app-body"><aside><div class="side-label" data-t="workspace">WORKSPACE</div><nav aria-label="Primary navigation">
@@ -3305,7 +3384,7 @@ function updateMotion(dt=0){
  document.querySelectorAll('.comms-chain>i').forEach((el,i)=>el.classList.toggle('transport-flow',running&&(i===0||s.connected)));
 }
 function start(){if(publicSourceMode()){running=false;startPublicSource();return;}initialiseReferenceVideos();if(typeof INITIAL_DOCUMENTS!=='undefined'&&!documents.list().length){for(const reference of INITIAL_DOCUMENTS)documents.addDocument(reference.name,reference.text,reference.sourceClass);}setProfiles();makeEngine();if(typeof INITIAL_PRESENTATION_DATA!=='undefined'&&INITIAL_PRESENTATION_DATA)seedPresentationData();for(const a of assets)transmit(a);ready=true;initialiseIcons();initialiseMapInteractions();setLang('en');setMap('region');renderRuleFields();renderDocuments();renderSearchEmpty();document.querySelectorAll('.marker').forEach(el=>{el.addEventListener('click',()=>chooseAsset(el.dataset.asset));el.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();chooseAsset(el.dataset.asset);}});});document.addEventListener('keydown',event=>{if(event.key==='Escape')closeModal();if(event.key==='Tab'&&!$('modal').hidden){const stops=[...$('modal').querySelectorAll('button,a[href],input,select,textarea,[tabindex="0"]')].filter(el=>!el.disabled&&!el.hidden&&el.getClientRects().length);if(stops.length){const first=stops[0],last=stops[stops.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}}}});window.addEventListener('resize',resizePresentation);document.addEventListener('fullscreenchange',resizePresentation);resizePresentation();updateMotion();$('app-status').hidden=true;initialiseOnlineMap();const initialRoute=window.location?.hash?.slice(1);if(Object.hasOwn(routes,initialRoute||'')){if(initialRoute==='work')openWorkQueue();else navigate(initialRoute);}window.addEventListener('hashchange',()=>{const target=window.location?.hash?.slice(1);if(Object.hasOwn(routes,target||'')){if(target==='work')openWorkQueue();else navigate(target);}});requestAnimationFrame(frame);}
-/* Vessel cameras and notification previews — 2026-10-27. */
+/* Vessel cameras and notification previews â€” 2026-10-27. */
 /* Vessel camera relationships for this static demonstration.
  * Camera assignments and vessel positions are simulated; video is real licensed recorded footage.
  * Shore-camera recordings retain their separate source and attribution records.
@@ -3977,6 +4056,144 @@ function start(){if(publicSourceMode()){running=false;startPublicSource();return
   setRole(value){if(!['duty-officer','maintenance-supervisor'].includes(value))return false;role=value;signature='';render();return true;},
   getState(id){sync();return id?(cases.has(id)?clone(cases.get(id)):null):{scope:'browser-demo',physicalRepair:false,role,cases:[...cases.values()].map(clone),lastProblem};}
  };
+})();
+
+/* Simultaneous, bounded vessel-camera playback using low-bandwidth recordings.
+ * At most four visible preview players load; the HD player is never attached
+ * while multi-view is active. Camera assignments remain demonstration data.
+ */
+(function installVesselMultiView(){
+ 'use strict';
+ const api=window.VesselCameras;if(!api)return;
+ const preferences=new Map(),pages=new Map(),positions=new Map(),tiles=new Map();
+ const pageSize=4;
+ let root=null,controls=null,grid=null,pager=null,title=null,count=null,multiButton=null,singleButton=null,previousButton=null,nextButton=null,activeKey='',activeVessel=null,rendering=false;
+ const vessel=()=>assets.find(a=>a.id===selected&&a.kind==='ship')||null;
+ const listFor=id=>api.camerasFor(id);
+ const preferred=id=>listFor(id).length>1?(preferences.get(id)||'multi'):'single';
+ const active=()=>!!ready&&!!vessel()&&route==='overview'&&document.hidden!==true&&preferred(selected)==='multi';
+ const label=c=>tr(c.labelEn,c.labelMs);
+ const sourceFor=c=>api.sources.find(s=>s.id===c.referenceVideoId)||null;
+ function previewUrl(source){if(source?.previewUrl)return source.previewUrl;const match=String(source?.urls?.[0]||'').match(/^(media\/vessel-(?:bow|aft|port))-recorded\.mp4(?:\?.*)?$/);return match?match[1]+'-preview.mp4':null;}
+ function el(tag,className,text){const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;}
+ function mount(){
+  if(root&&root.isConnected!==false)return;
+  root=el('section','vessel-multiview-panel');root.id='vessel-multiview-panel';
+  controls=el('div','vessel-multiview-controls');
+  const heading=el('div','vessel-multiview-title');title=el('b');const recorded=el('small');recorded.id='vessel-multi-recorded';heading.appendChild(title);heading.appendChild(recorded);controls.appendChild(heading);
+  const toggle=el('div','vessel-multiview-toggle');toggle.setAttribute('role','group');
+  multiButton=el('button','is-active');multiButton.type='button';multiButton.addEventListener('click',()=>showMulti());
+  singleButton=el('button');singleButton.type='button';singleButton.addEventListener('click',()=>showSingle(api.currentChannel(selected)?.id));
+  toggle.appendChild(multiButton);toggle.appendChild(singleButton);controls.appendChild(toggle);root.appendChild(controls);
+  grid=el('div','vessel-multiview-grid');root.appendChild(grid);
+  pager=el('div','vessel-multiview-pager');previousButton=el('button');previousButton.type='button';previousButton.addEventListener('click',()=>page(-1));count=el('span');count.setAttribute('aria-live','polite');nextButton=el('button');nextButton.type='button';nextButton.addEventListener('click',()=>page(1));pager.appendChild(previousButton);pager.appendChild(count);pager.appendChild(nextButton);root.appendChild(pager);
+  $('camera-video-display').parentNode.insertBefore(root,$('camera-video-display'));
+ }
+ function setState(tile,state){tile.state=state;tile.status.textContent=state==='playing'?tr('Playing','Dimainkan'):state==='error'?tr('Preview unavailable','Pratonton tidak tersedia'):state==='blocked'?tr('Press Play','Tekan Main'):state==='paused'?tr('Paused','Dijeda'):tr('Loading…','Memuatkan…');tile.article.dataset.playback=state;}
+ function release(tile){
+  tile.generation++;if(Number.isFinite(tile.video.currentTime))positions.set(tile.camera.id,tile.video.currentTime);
+  tile.video.pause?.();tile.video.removeAttribute('src');tile.video.load?.();
+ }
+ function stopGrid(){
+  if(!tiles.size&&!activeKey)return;
+  for(const tile of tiles.values())release(tile);tiles.clear();grid?.replaceChildren();activeKey='';activeVessel=null;
+ }
+ function createTile(camera){
+  const article=el('article','vessel-multi-tile');article.dataset.cameraId=camera.id;
+  const screen=el('div','vessel-multi-screen'),video=el('video');video.controls=true;video.muted=true;video.autoplay=true;video.loop=true;video.playsInline=true;video.preload='none';video.setAttribute('playsinline','');video.setAttribute('preload','none');screen.appendChild(video);article.appendChild(screen);
+  const caption=el('div','vessel-multi-caption'),expand=el('button','vessel-multi-expand');expand.type='button';const name=el('b'),arrow=el('span',null,'↗');expand.appendChild(name);expand.appendChild(arrow);expand.addEventListener('click',()=>showSingle(camera.id));caption.appendChild(expand);const status=el('small','vessel-multi-state');caption.appendChild(status);article.appendChild(caption);
+  article.addEventListener('click',event=>{if(event.target===article||event.target===screen)showSingle(camera.id);});
+  const tile={camera,article,video,name,status,state:'loading',generation:0};
+  video.addEventListener('loadedmetadata',()=>{if(tiles.get(camera.id)!==tile)return;const at=positions.get(camera.id);if(Number.isFinite(at)&&at>0)video.currentTime=Math.min(at,Number.isFinite(video.duration)?Math.max(0,video.duration-.05):at);});
+  for(const [event,state] of [['playing','playing'],['pause','paused'],['waiting','loading'],['stalled','loading'],['error','error']])video.addEventListener(event,()=>{if(tiles.get(camera.id)===tile)setState(tile,state);});
+  const url=previewUrl(sourceFor(camera));if(!url){setState(tile,'error');return tile;}
+  video.src=url;video.load?.();const generation=tile.generation,attempt=video.play?.();attempt?.catch(()=>{if(tiles.get(camera.id)===tile&&tile.generation===generation)setState(tile,'blocked');});
+  return tile;
+ }
+ function visibleCameras(id){const all=listFor(id),maxPage=Math.max(0,Math.ceil(all.length/pageSize)-1),index=Math.max(0,Math.min(pages.get(id)||0,maxPage));pages.set(id,index);return{all,index,visible:all.slice(index*pageSize,index*pageSize+pageSize)};}
+ function refreshTile(tile,camera){tile.camera=camera;tile.name.textContent=label(camera);tile.video.setAttribute('aria-label',tr('Recorded camera preview: ','Pratonton rakaman kamera: ')+camera.vesselId+' · '+label(camera));tile.article.querySelector('button')?.setAttribute('aria-label',tr('Expand camera: ','Besarkan kamera: ')+label(camera));setState(tile,tile.state);}
+ function render(){
+  if(rendering||!ready||typeof engine==='undefined'||!engine)return;rendering=true;
+  try{
+   const current=vessel(),mode=current?preferred(current.id):'single',isActive=active();
+   $('page-overview').dataset.multiView=String(isActive);$('camera-media').dataset.multiView=String(isActive);
+   if(!current){stopGrid();if(root)root.hidden=true;return;}
+   mount();root.hidden=!isActive;
+   // A compact toggle remains available in single mode, including one-camera
+   // vessels. Only the existing HD player is shown in that mode.
+   root.dataset.mode=mode;root.hidden=false;grid.hidden=!isActive;controls.hidden=false;pager.hidden=!isActive;
+   title.textContent=listFor(current.id).length+' '+tr(listFor(current.id).length===1?'camera':'cameras','kamera');
+   const recorded=$('vessel-multi-recorded');if(recorded)recorded.textContent=tr('Recorded previews','Pratonton rakaman');
+   multiButton.textContent=tr('Multi','Berbilang');singleButton.textContent=tr('Single HD','Tunggal HD');
+   multiButton.disabled=listFor(current.id).length<2;multiButton.classList.toggle('is-active',mode==='multi');singleButton.classList.toggle('is-active',mode==='single');multiButton.setAttribute('aria-pressed',String(mode==='multi'));singleButton.setAttribute('aria-pressed',String(mode==='single'));
+   if(!isActive){stopGrid();pager.hidden=true;return;}
+   // No HD fetch is started in multi mode: renderCameraPanel is short-circuited
+   // below. Release any HD source left by a deliberate single -> multi switch.
+   if(cameraPlayerAsset)detachCameraPlayer();$('camera-player').hidden=true;
+   const {all,index,visible}=visibleCameras(current.id),key=JSON.stringify([current.id,index,visible.map(c=>[c.id,c.referenceVideoId,previewUrl(sourceFor(c))])]);
+   if(key!==activeKey){stopGrid();activeKey=key;activeVessel=current.id;for(const camera of visible){const tile=createTile(camera);tiles.set(camera.id,tile);grid.appendChild(tile.article);}}
+   grid.dataset.count=String(visible.length);for(const camera of visible)refreshTile(tiles.get(camera.id),camera);
+   const start=index*pageSize+1,end=Math.min(all.length,start+pageSize-1);count.textContent=start+'–'+end+' / '+all.length+' '+tr('cameras','kamera');previousButton.textContent='← '+tr('Previous','Sebelum');nextButton.textContent=tr('Next','Seterusnya')+' →';previousButton.disabled=index===0;nextButton.disabled=end>=all.length;pager.dataset.paginated=String(all.length>pageSize);
+   $('camera-video-id').textContent=current.id.replace(/^DEMO-/,'')+' · '+tr('Multi-camera monitoring','Pemantauan berbilang kamera');$('camera-source-badge').textContent=tr('RECORDED PREVIEWS','PRATONTON RAKAMAN');
+  }finally{rendering=false;}
+ }
+ function showMulti(){const current=vessel();if(!current||listFor(current.id).length<2)return false;preferences.set(current.id,'multi');if(cameraPlayerAsset)detachCameraPlayer();render();return true;}
+ function showSingle(cameraId){
+  const camera=api.camerasFor(selected).find(c=>c.id===cameraId);if(!camera)return false;
+  preferences.set(camera.vesselId,'single');const at=tiles.get(cameraId)?.video.currentTime;stopGrid();if(Number.isFinite(at))positions.set(cameraId,at);
+  const result=originalSelectCamera(cameraId),item=api.videoItem(camera.vesselId);if(item&&Number.isFinite(positions.get(cameraId)))item.position=positions.get(cameraId);render();return result;
+ }
+ function page(delta){const current=vessel();if(!current||preferred(current.id)!=='multi')return false;const info=visibleCameras(current.id),next=info.index+delta;if(next<0||next>=Math.ceil(info.all.length/pageSize))return false;pages.set(current.id,next);render();return true;}
+ const originalCameraPanel=renderCameraPanel;
+ renderCameraPanel=function(){if(active()){api.render();render();return;}const result=originalCameraPanel.apply(this,arguments);render();return result;};
+ const originalRender=renderAll;renderAll=function(){const result=originalRender.apply(this,arguments);render();return result;};
+ const originalMapData=renderMapData;renderMapData=function(){const result=originalMapData.apply(this,arguments);render();return result;};
+ const originalSelectCamera=api.selectCamera;api.selectCamera=function(cameraId){const camera=api.resolveVessel(cameraId);if(camera)preferences.set(camera.id,'single');stopGrid();const result=originalSelectCamera.apply(this,arguments);render();return result;};
+ const originalOpenCamera=api.openCamera;api.openCamera=function(vesselId,cameraId){if(cameraId){const current=api.resolveVessel(vesselId);if(current)preferences.set(current.id,'single');}const result=originalOpenCamera.apply(this,arguments);render();return result;};
+ document.addEventListener('visibilitychange',()=>{if(document.hidden){stopGrid();if(root)root.hidden=true;}else renderCameraPanel();});
+ window.addEventListener('pagehide',()=>{stopGrid();});window.addEventListener('pageshow',()=>{renderCameraPanel();});
+ window.VesselMultiView={render,showMulti,showSingle,page,
+  getState(){return{vesselId:vessel()?.id||null,mode:vessel()?preferred(selected):'single',active:active(),activeVessel,page:pages.get(selected)||0,pageSize,visibleCameraIds:[...tiles.keys()],previewSources:[...tiles.values()].map(t=>({cameraId:t.camera.id,src:t.video.getAttribute('src')||t.video.src||'',state:t.state})),hdAttached:!!cameraPlayerAsset};}
+ };
+})();
+
+/* Compact map attribution disclosure. OSMF interactive-map guidance allows
+ * automatic collapse after five seconds with an accessible information entry.
+ * https://osmfoundation.org/wiki/Licence/Attribution_Guidelines#Interactive_maps
+ * Original provider/source links are preserved in a stable disclosure panel.
+ */
+(function installMapInformation(){
+ 'use strict';
+ const delay=5000,completed=new Set();
+ let host=null,panel=null,button=null,heading=null,closeButton=null,links=null,source='',expanded=true,manual=false,remaining=delay,timer=null,startedAt=null;
+ const visible=()=>typeof ready!=='undefined'&&ready&&route==='overview'&&document.hidden!==true;
+ function pause(){if(timer!==null){clearTimeout(timer);timer=null;if(startedAt!==null)remaining=Math.max(0,remaining-(Date.now()-startedAt));startedAt=null;}}
+ function mount(){
+  if(host)return true;const bar=$('map-basemap-status'),original=$('map-source-credit');if(!bar||!original||!original.innerHTML)return false;
+  host=document.createElement('div');host.className='map-information-disclosure';host.id='map-information-disclosure';
+  button=document.createElement('button');button.type='button';button.className='map-information-toggle';button.id='map-information-toggle';button.textContent='i';button.setAttribute('aria-controls','map-information-panel');button.addEventListener('click',()=>setExpanded(!expanded,true));
+  panel=document.createElement('section');panel.className='map-information-panel';panel.id='map-information-panel';panel.setAttribute('role','region');panel.setAttribute('aria-labelledby','map-information-heading');
+  const top=document.createElement('div');top.className='map-information-heading';heading=document.createElement('b');heading.id='map-information-heading';closeButton=document.createElement('button');closeButton.type='button';closeButton.className='map-information-close';closeButton.textContent='×';closeButton.addEventListener('click',()=>{setExpanded(false,true);button.focus();});top.appendChild(heading);top.appendChild(closeButton);panel.appendChild(top);
+  links=document.createElement('div');links.className='map-information-links';links.id='map-information-links';panel.appendChild(links);
+  panel.addEventListener('focusin',()=>{manual=true;pause();});panel.addEventListener('mouseenter',()=>{manual=true;pause();});panel.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();setExpanded(false,true);button.focus();}});
+  host.appendChild(button);host.appendChild(panel);bar.appendChild(host);bar.dataset.mapInformation='true';return true;
+ }
+ function setExpanded(value,user=false){if(!mount())return false;if(user){manual=true;pause();}expanded=!!value;update();return true;}
+ function update(){
+  if(!host)return;panel.hidden=!expanded;button.setAttribute('aria-expanded',String(expanded));button.setAttribute('aria-label',tr(expanded?'Hide map information':'Map information',expanded?'Sembunyikan maklumat peta':'Maklumat peta'));button.title=tr('Map information','Maklumat peta');heading.textContent=tr('Map information','Maklumat peta');closeButton.setAttribute('aria-label',tr('Close map information','Tutup maklumat peta'));
+  if(!visible()||manual||!expanded||completed.has(source)){pause();return;}
+  if(timer!==null)return;startedAt=Date.now();timer=setTimeout(()=>{timer=null;startedAt=null;if(!visible()){remaining=delay;return;}if(manual)return;completed.add(source);remaining=0;expanded=false;update();},remaining);
+ }
+ function render(){
+  if(!mount())return;const current=$('map-source-credit').innerHTML;
+  if(current&&current!==source){pause();source=current;links.innerHTML=current;if(!manual){expanded=!completed.has(source);remaining=delay;}}
+  update();
+ }
+ const originalMapState=renderOnlineMapState;renderOnlineMapState=function(){const result=originalMapState.apply(this,arguments);render();return result;};
+ const originalRender=renderAll;renderAll=function(){const result=originalRender.apply(this,arguments);render();return result;};
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();else render();});
+ window.addEventListener('pagehide',pause);window.addEventListener('pageshow',render);
+ window.MapInformation={render,show(){return setExpanded(true,true);},hide(){return setExpanded(false,true);},toggle(){return setExpanded(!expanded,true);},getState(){return{expanded,manual,remainingMs:timer!==null?Math.max(0,remaining-(Date.now()-startedAt)):remaining,sourceHtml:source,delayMs:delay};}};
 })();
 
 start();
