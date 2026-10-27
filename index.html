@@ -2167,18 +2167,18 @@ body[data-layout=desktop] #app-frame>#map-alert-ribbon .map-alert-copy{justify-c
 body[data-layout=desktop] #app-frame>#map-alert-ribbon .map-alert-navigation{margin:0;padding:0}
 body[data-layout=desktop] #app-frame>#map-alert-ribbon .map-alert-locate{margin:0}
 
-/* Bright alert red on navy; only the backlight breathes, never text opacity. */
+/* Match the health alarm red, with a white diffused backlight for contrast. */
 #app-frame #map-alert-ribbon .map-alert-count,
 #app-frame #map-alert-ribbon .map-alert-reading,
-#app-frame #map-alert-ribbon .alert-bell{color:#ff7474;animation:none;filter:none;text-shadow:none}
+#app-frame #map-alert-ribbon .alert-bell{color:#ad2337;animation:none;filter:none;text-shadow:none}
 #app-frame #map-alert-ribbon .map-alert-count,
 #app-frame #map-alert-ribbon .map-alert-reading{position:relative;isolation:isolate;font-weight:750}
 #app-frame #map-alert-ribbon .map-alert-count:before{display:none}
 #app-frame #map-alert-ribbon .alert-bell{display:block;width:15px;height:15px;flex:0 0 15px;stroke-width:2}
 #app-frame #map-alert-ribbon .map-alert-reading:before,
-#app-frame #map-alert-ribbon .map-alert-count:after{content:'';position:absolute;inset:0 -4px;z-index:-1;pointer-events:none;border-radius:6px;background:#ff39391a;filter:blur(3px);animation:alert-backlight 2.4s ease-in-out infinite}
-@keyframes alert-backlight{0%,100%{opacity:.25}50%{opacity:.55}}
-@media(prefers-reduced-motion:reduce){#app-frame #map-alert-ribbon .map-alert-reading:before,#app-frame #map-alert-ribbon .map-alert-count:after{animation:none;opacity:.3}}
+#app-frame #map-alert-ribbon .map-alert-count:after{content:'';position:absolute;inset:-1px -6px;z-index:-1;pointer-events:none;border-radius:6px;background:#ffffff;filter:blur(4px);animation:alert-backlight 2.4s ease-in-out infinite}
+@keyframes alert-backlight{0%,100%{opacity:.72}50%{opacity:.9}}
+@media(prefers-reduced-motion:reduce){#app-frame #map-alert-ribbon .map-alert-reading:before,#app-frame #map-alert-ribbon .map-alert-count:after{animation:none;opacity:.82}}
 
 
 </style></head><body data-source-mode="demo"><div id="stage"><div id="app-frame">
