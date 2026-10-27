@@ -2273,6 +2273,12 @@ body[data-layout=mobile] #app-frame #map-alert-ribbon .map-alert-geo{font-size:1
 /* Alert coordinates use red emphasis suited to each surface. */
 #app-frame #map-alert-ribbon .map-alert-geo{color:#ff7474;font-weight:700}
 #modal .notification-position>span{color:#ad2337;font-weight:700}
+/* Red coordinate highlight: restrained shimmer, stable legible digits. */
+#app-frame #map-alert-ribbon .map-alert-geo{color:#ff3b30;font-weight:750;position:relative;isolation:isolate;text-shadow:0 0 2px #ff3b3050;animation:coordinate-shimmer 2.2s ease-in-out infinite}
+#app-frame #map-alert-ribbon .map-alert-geo:before{content:'';position:absolute;inset:-3px -6px;border-radius:5px;background:#ff291714;filter:blur(4px);z-index:-1;pointer-events:none;animation:coordinate-halo 2.2s ease-in-out infinite}
+@keyframes coordinate-shimmer{0%,100%{text-shadow:0 0 2px #ff3b3030}50%{text-shadow:0 0 3px #ff3b3070,0 0 7px #ff3b3090}}
+@keyframes coordinate-halo{0%,100%{opacity:.25}50%{opacity:.9}}
+@media(prefers-reduced-motion:reduce){#app-frame #map-alert-ribbon .map-alert-geo,#app-frame #map-alert-ribbon .map-alert-geo:before{animation:none}}
 
 #bot-hub{position:fixed;right:18px;bottom:16px;z-index:70;font:14px/1.45 var(--sans,Arial,sans-serif);color:#17394d}
 #bot-hub[hidden],#bot-hub [hidden]{display:none!important}
