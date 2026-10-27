@@ -26,3 +26,8 @@ Tommy Creation
 https://commons.wikimedia.org/wiki/File:DJI_Phantom_3_Pro_-_Langkawi_,Malaysia.webm
 CC BY 3.0 — https://creativecommons.org/licenses/by/3.0/
 Continuous 20-second excerpt from 88–108 seconds of the 200.834-second source recording. Only empty baked-in black margins were removed using crop x=0, y=86, width=1280, height=550, conservatively preserving all active image pixels detected across all 601 source frames. Re-encoded as 1280 × 550 H.264. Original image geometry and chronology preserved; no stretch or overlays added.
+
+media/vessel-bow-simulated.mp4
+media/vessel-aft-simulated.mp4
+media/vessel-port-simulated.mp4
+Created for this demonstration on 2026-10-27 from AI-generated patrol-boat camera illustrations. Synthetic scenes with subtle camera-motion animation; these are not recordings from APMM vessels or live CCTV. Three shared visual angles represent the configurable virtual onboard camera channels. Silent H.264, 1280 x 720, 24 fps, 10 seconds, fast-start MP4. No text or branding overlays are burned into the images.

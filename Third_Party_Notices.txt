@@ -618,3 +618,7 @@ Maritime basemap palette modifies OpenFreeMap Liberty display styling only; geog
 Talktide official brand mark supplied from https://www.talktidetech.com/media/logo-talktide-official-web.webp
 Brand source: https://www.talktidetech.com/
 Used to identify the solution provider at the user request. Agency acceptance or live Talktide/LEPA integration is not implied.
+
+Report import and export libraries (loaded locally on demand)
+PDF.js 4.10.38 — Apache-2.0; pdf-lib 1.17.1 — MIT; SheetJS 0.20.3 — Apache-2.0.
+Complete notices, package origins and exact bundled hashes are in media/report-vendor/LICENSES.txt and media/report-vendor/versions.json.

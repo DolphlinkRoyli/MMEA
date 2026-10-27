@@ -1,0 +1,46 @@
+[
+  {
+    "package": "pdfjs-dist",
+    "version": "4.10.38",
+    "license": "Apache-2.0",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/mozilla/pdf.js.git"
+    }
+  },
+  {
+    "package": "pdf-lib",
+    "version": "1.17.1",
+    "license": "MIT",
+    "repository": "git+https://github.com/Hopding/pdf-lib.git"
+  },
+  {
+    "package": "xlsx",
+    "version": "0.20.3",
+    "license": "Apache-2.0",
+    "repository": {
+      "type": "git",
+      "url": "https://git.sheetjs.com/SheetJS/sheetjs"
+    }
+  },
+  {
+    "file": "pdf-lib.min.js",
+    "sha256": "0f9a5cad07941f0826586c94e089d89b918c46e5c17cf2d5a3c6f666e3bc694f",
+    "bytes": 525099
+  },
+  {
+    "file": "pdf.min.mjs",
+    "sha256": "27fc2a057a00f92a4334ad06e17dbd7259912954e9fb7f76400bcca5fd190a9c",
+    "bytes": 352645
+  },
+  {
+    "file": "pdf.worker.min.mjs",
+    "sha256": "1baa1844c89c80a5b2797c916e75ab29254be46d8e9cb53cb6364d7aad84be36",
+    "bytes": 1375838
+  },
+  {
+    "file": "xlsx.full.min.js",
+    "sha256": "cc015130aa8521e7f088f88898eba949ccdcbfb38df0bd129b44b7273c3a6f41",
+    "bytes": 951904
+  }
+]
