@@ -2284,6 +2284,10 @@ body[data-layout=mobile] #app-frame #map-alert-ribbon .map-alert-geo{font-size:1
 @keyframes coordinate-shimmer{0%,100%{text-shadow:0 0 2px #ff3b3030}50%{text-shadow:0 0 3px #ff3b3070,0 0 7px #ff3b3090}}
 @keyframes coordinate-halo{0%,100%{opacity:.25}50%{opacity:.9}}
 @media(prefers-reduced-motion:reduce){#app-frame #map-alert-ribbon .map-alert-geo,#app-frame #map-alert-ribbon .map-alert-geo:before{animation:none}}
+/* Active map alert count: a slow red pulse, with stable, readable text. */
+#app-frame #map-alert-ribbon:not([hidden]) .map-alert-count{animation:map-alert-count-pulse 2s ease-in-out infinite}
+@keyframes map-alert-count-pulse{0%,100%{filter:brightness(1);box-shadow:0 0 0 0 #ad233700}50%{filter:brightness(1.3);box-shadow:0 0 0 3px #ad233735,0 0 12px #ad233770}}
+@media(prefers-reduced-motion:reduce){#app-frame #map-alert-ribbon:not([hidden]) .map-alert-count{animation:none;filter:none;box-shadow:none}}
 
 #bot-hub{position:fixed;right:18px;bottom:16px;z-index:70;font:14px/1.45 var(--sans,Arial,sans-serif);color:#17394d}
 #bot-hub[hidden],#bot-hub [hidden]{display:none!important}
