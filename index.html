@@ -1653,8 +1653,8 @@ select:focus-visible{outline:3px solid #6da9dc;outline-offset:2px}
 
 /* Shared UI icon scale. Only controls and named icon slots are affected;
    map geometry, chart SVGs, logos and media retain their own dimensions. */
-:root{--ui-icon-inline:16px;--ui-icon-control:18px;--ui-icon-feature:22px;--ui-icon-navigation:24px}
-#app-frame button svg:not(.asset-glyph),#modal button svg{
+:root{--ui-icon-inline:16px;--ui-icon-control:18px;--ui-icon-feature:22px;--ui-icon-navigation:24px;--ui-icon-marker:24px;--ui-icon-hero:32px}
+#app-frame :where(button) svg:not(.asset-glyph),#modal button svg{
  width:var(--ui-icon-control)!important;height:var(--ui-icon-control)!important;
  min-width:var(--ui-icon-control);max-width:var(--ui-icon-control);max-height:var(--ui-icon-control);
  flex:0 0 auto!important;display:block;stroke-width:1.8
@@ -1681,9 +1681,9 @@ select:focus-visible{outline:3px solid #6da9dc;outline-offset:2px}
  display:inline-flex;align-items:center;justify-content:center;
  width:16px;height:16px;flex:0 0 16px;font-size:16px!important;font-weight:500;line-height:1!important
 }
-#app-frame .report-flow>i{font-size:18px!important;line-height:1;font-style:normal}
+#app-frame .report-flow>i{font-size:var(--ui-icon-inline)!important;line-height:1;font-style:normal}
 #app-frame .work-step:not(:last-child)::after{font-size:16px;line-height:1}
-#app-frame .map-tools button:is(#map-zoom-in,#map-zoom-out){font-size:22px!important;line-height:1!important}
+#app-frame .map-tools button:is(#map-zoom-in,#map-zoom-out){font-size:var(--ui-icon-control)!important;line-height:1!important}
 /* Leave the touch target generous while keeping the glyph compact. */
 #app-frame button.icon-button,#modal button.icon-button{display:inline-flex;align-items:center;justify-content:center;min-width:36px;min-height:36px}
 @media(max-width:767px),(max-width:1000px) and (max-height:500px){
@@ -1691,6 +1691,35 @@ select:focus-visible{outline:3px solid #6da9dc;outline-offset:2px}
 }
 
 #app-frame .report-result-symbol{width:32px;height:32px;flex:0 0 32px;font-size:18px;line-height:1}
+
+/* Explicit role overrides cover non-button icons and the deeper signal-flow
+   selectors. A surrounding icon tile is not the glyph size. */
+#app-frame :is(.asset-summary .asset-symbol) svg{
+ width:var(--ui-icon-hero)!important;height:var(--ui-icon-hero)!important;
+ min-width:var(--ui-icon-hero)!important;max-width:var(--ui-icon-hero)!important;max-height:var(--ui-icon-hero)!important;flex:none;stroke-width:1.8
+}
+#app-frame #signal-journey .flow-icon svg,
+#app-frame .work-step-icon svg,#app-frame .integration-symbol svg,
+#modal :is(.slack-channel-icon,.slack-message-avatar,.camera-video-empty) svg{
+ width:var(--ui-icon-feature)!important;height:var(--ui-icon-feature)!important;
+ min-width:var(--ui-icon-feature)!important;max-width:var(--ui-icon-feature)!important;max-height:var(--ui-icon-feature)!important;flex:none;stroke-width:1.8
+}
+#app-frame :is(.search-input,.map-tools,.camera-tab-icon,.vessel-camera-inventory,.vessel-camera-config-list,.source-map-tools,.source-recording-tabs) svg,
+#modal :is(.vessel-camera-inventory,.vessel-camera-config-list) svg{
+ width:var(--ui-icon-control)!important;height:var(--ui-icon-control)!important;
+ min-width:var(--ui-icon-control)!important;max-width:var(--ui-icon-control)!important;max-height:var(--ui-icon-control)!important;flex:none;stroke-width:1.8
+}
+#app-frame :is(.online-asset-pin,.source-recording-pin) svg{
+ width:var(--ui-icon-marker)!important;height:var(--ui-icon-marker)!important;
+ min-width:var(--ui-icon-marker)!important;max-width:var(--ui-icon-marker)!important;max-height:var(--ui-icon-marker)!important;stroke-width:1.8
+}
+#app-frame .report-upload>span{
+ display:flex;align-items:center;justify-content:center;
+ width:32px;height:32px;flex:0 0 32px;font-size:var(--ui-icon-control)!important;line-height:1!important
+}
+#app-frame .report-result-symbol{font-size:var(--ui-icon-control)!important}
+/* Keep status help a small inline glyph; mobile retains its larger hit target. */
+#app-frame button.status-help,#modal button.status-help{font-size:var(--ui-icon-inline)!important;line-height:1!important}
 
 /* Desktop presentation: reserve enough room for both the issue queue and
    every human action. Mobile keeps its existing stacked, scrolling layout. */
@@ -1807,6 +1836,77 @@ body[data-layout=desktop] #page-comms .notification-channel{padding:6px;gap:5px}
 body[data-layout=desktop] #page-comms .notification-channel b{font-size:13px}
 body[data-layout=desktop] #page-comms .notification-strip-head small{font-size:10px}
 body[data-layout=desktop] #page-comms .notification-strip-foot{font-size:10px}
+
+/* Canonical type roles, shared by every operational page and dialog.
+   Sizes are canvas units: the complete presentation scales as one composition. */
+:root{--type-page:28px;--type-section:18px;--type-body:14px;--type-field:16px;--type-caption:12px;--type-metric:28px;--weight-normal:400;--weight-label:600;--weight-heading:700;--text-secondary:#526a7b}
+#app-frame main,#modal{font-family:var(--sans);font-size:var(--type-body);line-height:1.4}
+#app-frame main h1{font-size:var(--type-page)!important;line-height:1.2!important;font-weight:var(--weight-heading)!important}
+#app-frame main :is(h2,h3),#modal :is(h2,h3){font-size:var(--type-section)!important;line-height:1.3!important;font-weight:var(--weight-heading)!important}
+#app-frame main :is(p,td),#modal :is(p,td){font-size:var(--type-body)!important;line-height:1.4!important}
+#app-frame main :is(label,.form-label),#modal :is(label,.form-label){font-size:var(--type-body)!important;font-weight:var(--weight-label)!important;line-height:1.4!important}
+#app-frame main button:not(.status-help):not(.icon-button):not(.online-asset-pin):not(.source-recording-pin),#modal button:not(.status-help):not(.icon-button){font-size:var(--type-body)!important;font-weight:var(--weight-label)!important;line-height:1.3!important}
+#app-frame main :is(input:not([type=file]):not([type=checkbox]):not([type=radio]),textarea),#modal :is(input:not([type=file]):not([type=checkbox]):not([type=radio]),textarea){font-size:var(--type-field)!important;line-height:1.4!important}
+#app-frame main :is(small,th,.badge,.muted,.page-note,.flow-owner-label,.work-actor,.notification-auto,.notification-demo,.notification-strip-foot,.report-result-label,.report-eyebrow,.report-basis-badge,.report-row-status,.report-comparison-scope,.report-template-heading),#modal :is(small,th,.badge,.muted){font-size:var(--type-caption)!important;line-height:1.4!important}
+#app-frame main :is(.notification-strip-foot,.notification-strip-head) :is(span,small),#app-frame .notification-channel small{font-size:var(--type-caption)!important;line-height:1.4!important}
+#app-frame main :is(.decision-values,.decision-next,.work-condition,.comms-payload) span{font-size:var(--type-caption)!important;line-height:1.4!important}
+#app-frame main :is(.decision-next b,.work-step>b,.notification-channel b,.notification-rules-shortcut b,.report-flow>div>span,.report-upload>b,.vessel-multiview-title b,.vessel-multi-expand b){font-size:var(--type-body)!important;line-height:1.3!important;font-weight:var(--weight-label)!important}
+#app-frame main :is(.decision-values b,.comms-payload b,.workspace-evaluations b){font-size:var(--type-section)!important;line-height:1.3!important}
+#app-frame main :is(.workspace-stat>b,.report-counts b,.comms-chain b){font-size:var(--type-metric)!important;line-height:1.1!important;font-weight:var(--weight-heading)!important}
+#app-frame main :is(.workspace-stat>span,.report-counts span,.report-snapshot>span,.report-snapshot>b,.report-snapshot>small,.report-email-controls>div>span,.report-difference-table td>small){font-size:var(--type-caption)!important;line-height:1.4!important}
+#app-frame main :is(.report-format-note,.report-basis-copy,.report-ready-state p,.report-result-head p,.report-email-controls>small,.report-difference,.comms-chain p,.workspace-evaluations p){font-size:var(--type-caption)!important;line-height:1.4!important;color:var(--text-secondary)!important}
+#app-frame main :is(.report-panel-heading>b,.report-email-controls>div>b,.notification-strip-head b){font-size:var(--type-section)!important;line-height:1.3!important}
+#app-frame main :is(.slack-entry-title b,.signal-journey button b,.vessel-camera-footer button span,.decision-action span){font-size:var(--type-body)!important}
+#app-frame #selected-summary b{font-size:var(--type-page)!important}
+#app-frame .decision-comparison strong small{font-size:24px!important}
+#app-frame .decision-limit b{font-size:var(--type-section)!important}
+#app-frame main .status-help{font-size:14px!important;font-weight:600!important}
+#app-frame .screen-pager,#app-frame .report-fit-pager{font-size:var(--type-caption)!important}
+#app-frame .vessel-multiview-pager span{font-size:var(--type-caption)!important}
+/* Card baselines and explicit alignment replace mismatched free-flow heights. */
+body[data-layout=desktop] #page-comms{grid-template-rows:60px 58px 160px 30px 50px 70px 42px minmax(0,1fr)}
+body[data-layout=desktop] #page-comms>.comms-chain,body[data-layout=desktop] #alert-notifications-comms{height:160px;align-self:stretch}
+body[data-layout=desktop] #page-comms .comms-chain>div{display:grid;grid-template-rows:42px 34px 31px auto;grid-template-columns:1fr;gap:0;padding:10px 12px;align-content:start}
+body[data-layout=desktop] #page-comms .comms-chain h2{grid-row:1;grid-column:1;margin:0;min-height:0;font-size:16px!important}
+body[data-layout=desktop] #page-comms .comms-chain small{grid-row:2;grid-column:1;align-self:start}
+body[data-layout=desktop] #page-comms .comms-chain b{grid-row:3;grid-column:1;align-self:start}
+body[data-layout=desktop] #page-comms .comms-chain p{grid-row:4;grid-column:1;align-self:start}
+body[data-layout=desktop] #alert-notifications-comms{display:flex;flex-direction:column;justify-content:space-between;padding:10px 12px}
+body[data-layout=desktop] #page-comms .notification-strip-head{flex-wrap:nowrap;align-items:flex-start;gap:6px}
+body[data-layout=desktop] #page-comms .notification-strip-head>div{gap:4px 8px}
+body[data-layout=desktop] #page-comms .notification-strip-head small{flex-basis:100%}
+body[data-layout=desktop] #page-comms .notification-strip-head b{font-size:16px!important}
+body[data-layout=desktop] #page-comms .notification-channel{height:52px}
+body[data-layout=desktop] #page-comms .notification-strip-foot{align-items:center;gap:10px}
+body[data-layout=desktop] #page-comms .notification-strip-foot button{font-size:12px!important}
+body[data-layout=desktop] #page-comms .notification-strip-foot span{max-width:55%}
+body[data-layout=desktop] #page-comms .comms-payload>div{height:100%;align-items:start}
+body[data-layout=desktop] #page-reports .report-layout{grid-template-columns:360px minmax(0,1fr)}
+body[data-layout=desktop] #page-reports .report-panel-heading{align-items:start}
+body[data-layout=desktop] #page-reports .report-panel-heading button{white-space:normal;text-align:center;max-width:115px}
+body[data-layout=desktop] #page-reports .report-controls{padding:12px}
+body[data-layout=desktop] #page-reports .report-upload{min-height:80px;padding:8px}
+body[data-layout=desktop] #page-reports .report-flow>div{padding:8px 12px}
+body[data-layout=desktop] #page-reports .report-email-controls{padding:10px 14px;gap:5px}
+body[data-layout=desktop] #page-reports .report-email-controls>div:first-child{align-items:start}
+body[data-layout=desktop] #page-reports .report-email-controls>div>span{max-width:50%;text-align:right}
+body[data-layout=desktop] #page-reports .report-result-head{padding:10px 14px}
+body[data-layout=desktop] #page-reports .report-difference-table td{padding:6px 10px}
+body[data-layout=desktop] #page-reports .report-heading{margin-bottom:8px}
+body[data-layout=desktop] #page-work .work-journey{margin-bottom:8px}
+body[data-layout=desktop] #page-work .work-step{min-height:110px;padding:8px 10px;column-gap:6px}
+body[data-layout=desktop] #page-work .notification-strip-head{gap:6px}
+body[data-layout=desktop] #page-work .notification-strip-foot{gap:12px}
+body[data-layout=desktop] #page-work .notification-strip-foot button{font-size:12px!important}
+/* Mobile retains accessible labels and the existing stacked flow. */
+body[data-layout=mobile] #app-frame nav button{font-size:12px!important}
+
+#app-frame :is(#map-classes b,.maplibregl-ctrl-scale,.comms-step,.work-step-number,.notification-rules-shortcut span){font-size:var(--type-caption)!important;line-height:1.4!important}
+body[data-layout=desktop] #page-comms .comms-chain h2{padding-right:14px}
+
+#app-frame main td :is(b,strong),#modal td :is(b,strong){font-size:inherit!important}
+
+#app-frame #signal-journey button b{font-size:var(--type-body)!important;line-height:1.3!important}
 
 </style></head><body data-source-mode="demo"><div id="stage"><div id="app-frame">
 <header><div class="identity"><a class="provider-brand" href="https://www.talktidetech.com/" target="_blank" rel="noopener" aria-label="Talktide — solution provider"><span data-t="solutionBy">Solution by</span><img src="data:image/webp;base64,UklGRrwIAABXRUJQVlA4TK8IAAAvywAMEPWCgrZtpIQ/7O2+7gBExAQA5uNQJghxtEIQS5XMrVyvTuC6jQ3scFfLuqhAF4v/p+VaeyJJsrK/gv0vpJ96hZGGgA38zQwzT8zMzJOShzzUWOCm28zMlFJqILaN5EgS+niN8z7axwdvIG2b+Ney7ZeoAAAA4v////////////9z4DaSIiXHWIPb+wU50rankXT0mWNMuBR56dc330A4B9g7UUu/7a4pxVpmJpdrI/6iZaaUmSI6grNlkBxJkiJb9pR8MrzTZ/6+0bmfWQI8Pykht5HkSOrz/OzQulEbHZ1XtyefY8HaJI22bWPLGs94kW3btm3btm3bdv2ybdt2fbaZ+YznOnAbSZHc08vMu3cvsFauvX6yhrbjjFWEHEW+CMercEQOnQ7Hl4ix2TenErRcw3VxTlwHVDIetogS+cQLArYJRhGOYIimRCDEO2S5rRUnN6A8W9iBorIk1pCIpMENSUiAOEJ6LuwJN8PsXesiD25qaBRCAOQ70rm6B5VZaxZqoqPT0Dh0k1yyyZ9VpCbxI2pq0YC8Qfqvv7nCySdkIBJOsk1HsmHJ/wM3k15BZkaDtW4gZuzVmTCPbGZ2w1hCtl6qBmEOkb6bckwFOTL1+4LKH1srE08N+sqJusVBKc2e6h3kxAfVdzlKvNlFpBP+trja4s4MJQuJCeSfm5ILAUMsc4dsUO2FEvmCiKTJGdn3193doBCKRCXVH7dBKD+q/dLmDd6g2vvUEQekce1z32UilvjnFqIpb/OiWlPNrdhm6MKuUaVB8IW0RE+nVI8hmzM29Ts/iRdGwaYbmioQ+eAUYiRnyCm5iVxb+/co1lrSkLhTeGfvWjJfTHO6/UW1NftgElsHqUz78IKozRdEspvEl1VfmrZ08uMLAcgvJ7IFZcehHqFa2jn+3wc+Nm+qX+Dmypp9UPeedf9Jsa5a8hIPinwqIy5ALmApXUBi+DFSORJMmyCTIEIQ8vukXqZI3mTrko3wdQG2tpEztr4+tc4S+aP5qUexjggJ8ZFSjETQ0CiNoiCGC4Q4KkU8uCBEmYi2UsSLEPC4KqZKKfuFjrnAvF8Siqf50DWIhlL2a7GMuS22gjjiTdyIDdEiHFwwoggeUfR4KcikIzdeVpocyHTrTjUwjPo9ukn8QXiWiJAR/yn/i4yPGADY705wYogLKAlED4gfIeJl/BcQfyLEzAXuNAmLwtDwCWTB4SEOiLokzCbhRBNxmYjCa5rtSvPFqnfNaH1o5LTF1t6pu2L/xKUpMRPyst8uDZ9+EDYzQJRN+4Y8Wi5BfpEAUZAbDqqZ0rfuAkOojD0PiD4vwUqIyMBD7DzsA8EjXgAxctvMpn+PswuDAktfjBMIpatp9guLJo7Q0vB4KQP7HQwe/2fgroh6TWh4DZ8PRTh+dpDBZRgfAP9aXBcUcQdZXEGeH0o94C6wxB5wdzE4FvHqfnjZ/cCYZ5olf7FMns9A9doj5oA3Yg0Kx0slSQBAfNF4AXhptOwA0dWdh6IDOPa29Ud0G7h728zOZijR2OF4lUI8nFssvhdLMNPQOr8EZX7RdGUiwoAipKx3TJgAxZ1QNAgfrzNjhOPP1MXS1huEI+nKnfHHY0X8gTi5bSIHEHFd0VDKkF+wAZgPjfgC/m4QFcDXWgoaCqELIUMeppBnbVHJEycI0NkyMbkBjYWoAUSEmcKSQVxd7YawehlmIsaGwN1giBtA6DW8AYmv4eyhFOLIUd2COtXA/Is3Qkb+C40ezMfBnRAUKIshM5uKCZi90w1RMoNyYhDcDcppQBg1iL4kM1ZRiniXHsOIWuIHeYLUrYV3KFK9sAkU3cXHQYQA791uHC0rYNukEzqR+AG47k5whuDhEvDAj0UuEXXkjpZrCnFRDUwMmSmJuKn5lrCPqrBXvGy2LIzB7ffDdm0E8lkfcdLgLjBavOyCcX280z4cAIUvw+xEcAAVK1dd4EJdwNdcm5tAFHtka9aYzQUNAxKQmi6EKvFCznVpcgNqT0ODhH/4W+qnsHE+FG1+aKUAImUARBAgntwJXsMVYOlLizhxHRDxKYGETYS9CnFRffqldNxAlLsP8Iirfa1NxUCK/Q/NgjWrpdDiGO0vhPxOjyR9rgN/juv2xZDsB4RPNPaRBFFaYtUTcMnai+QOoVpStqgSb6RhnN7OgEaBkPP0SjwNDy+OSBlPQoWhDS5QYgTYe7ln3AnJewAiyIv/A1BG+Bx22FS9GW0elBPvphX75uy7ScyorPvMhfxR3YNqTaQB5apZOAu43ixD/8BAFid7Tl24cEHkxetAd0J2DBA7b/VEFkMXLrwhBh5ngJfdCYF/hBN3AOXxS29caFyzNMu2uxoGIR9skS5NwqZm1NX/olLaGlcZiBoL/IjIlBYhRHycqM+/yIDocIHog1TxrqFjvkJlf/yHSqGKHKEqLg1U3yB9iIA1DDXI3NZGywbIKyG3xRnwnj+ZdxyL0Oq8ScT0zEysCAkLvXw0x9i0rRC/NMgmTOyR2QjVJTtwa7DSvS4NdZDImndRbEJhExm1fhQiXGqtImJqobdqrSLFvSAEHfq38BAx1EYRYGY2Wg61irT5UPi9JhJqrSyGKODL87WKmIeOHbW+uBgC72giQqrvi+dFxI4TifPzxZB8oeEj4vAy6UCilEKEI0D8KzXighj45rA1KaPe/3kuLEly+Lvv7INfXORZMhGhpDqvrVHX9D3DtuQw+ErlPinEDV9ImyArmzQNQo5l8q8SRG6XbCaiMl2QJnR9Z8mjqd8XFDGjGPKBJqcP90ZJHNQXXczn/wqqd5CTJ0mhyjTf+Wd35MRIV3N3FtUWX032ks8wzUi8il4miAvn6+9/pC/5o5MUdxHygkxc8v/ALTkNU4y/pY7owyuYi8UKJ6Q/sYJ8IMDoHtE/R8Saoi2ZjerrIpm+2B+OL3lZxqU2+HqShROF0HacDt9wtkvopBbeFk3JZRQA" width="145" height="35" alt="Talktide"></a><div class="customer-identity"><b>MMEA / APMM</b><small data-t="agencyName">Malaysian Maritime Enforcement Agency</small></div></div><div class="header-context"><span data-t="productName">Integrated asset monitoring</span><b id="header-route" role="heading" aria-level="1">Overview</b><div id="header-summary" class="header-summary"></div></div><div class="header-tools"><span class="data-context" data-t="demonstration">Demo</span><div class="language"><button id="lang-en" onclick="setLang('en')">EN</button><button id="lang-ms" onclick="setLang('ms')">BM</button></div><button id="scale-fill" onclick="setScale('fill')" data-t="fill">Fill</button><button id="scale-fit" onclick="setScale('fit')" data-t="fit">Fit</button><button id="scale-native" onclick="setScale('native')">1:1</button><button id="presentation-fullscreen" onclick="fullscreen()" data-t="fullScreen">Full screen</button><button class="icon-button" onclick="openHelp()" aria-label="Scope and help"><span data-icon="circle-alert"></span></button></div></header>
@@ -4426,5 +4526,7 @@ function start(){if(publicSourceMode()){running=false;startPublicSource();return
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
  window.ScreenFit={refresh};
 })();
+/* Typography and alignment use CSS roles; no render-loop or observer work. */
+
 start();
 </script></body></html>
