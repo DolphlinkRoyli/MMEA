@@ -1,0 +1,157 @@
+{
+  "created": "2026-10-26",
+  "purpose": "Stock motion imagery for OctoMind login design preview; no depicted person or facility is represented as a customer or endorsing OctoMind.",
+  "license_url": "https://mixkit.co/license/#videoFree",
+  "atlas": {
+    "file": "world-atlas.mp4",
+    "width": 1280,
+    "height": 360,
+    "tile_width": 320,
+    "tile_height": 180,
+    "columns": 4,
+    "rows": 2,
+    "duration_seconds": 8,
+    "frame_rate": 15,
+    "audio": false,
+    "playback": "loop",
+    "bytes": 613801
+  },
+  "tiles": [
+    {
+      "title": "Young people working together in the office",
+      "mixkit_id": 42641,
+      "theme": "collaboration",
+      "source_page": "https://mixkit.co/free-stock-video/young-people-working-together-in-the-office-42641/",
+      "download_url": "https://assets.mixkit.co/videos/42641/42641-720.mp4",
+      "license": "Mixkit Stock Video Free License",
+      "license_evidence": "Individual source page explicitly states commercial or personal use under the Mixkit Stock Video Free License; verified 2026-10-26 via web source.",
+      "input_sha256": "f2ba545870ce4fe8024f0b76a777b9d8ecf14819b35be1d3cf4309d6df227fa5",
+      "tile_index": 0,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 180
+      }
+    },
+    {
+      "title": "Family walking together in nature",
+      "mixkit_id": 39767,
+      "theme": "family",
+      "source_page": "https://mixkit.co/free-stock-video/family-walking-together-in-nature-39767/",
+      "download_url": "https://assets.mixkit.co/videos/39767/39767-720.mp4",
+      "license": "Mixkit Stock Video Free License",
+      "license_evidence": "Individual source page explicitly states commercial or personal use under the Mixkit Stock Video Free License; verified 2026-10-26 via web source.",
+      "input_sha256": "bccf5b3d1d31e0ccfe060f37e34092a72ee9831f3fee78dede683a7cc4218875",
+      "tile_index": 1,
+      "crop": {
+        "x": 320,
+        "y": 0,
+        "width": 320,
+        "height": 180
+      }
+    },
+    {
+      "title": "People working in a field",
+      "mixkit_id": 2388,
+      "theme": "agriculture",
+      "source_page": "https://mixkit.co/free-stock-video/people-working-in-a-field-2388/",
+      "download_url": "https://assets.mixkit.co/videos/2388/2388-720.mp4",
+      "license": "Mixkit Stock Video Free License",
+      "license_evidence": "Individual source page explicitly states commercial or personal use under the Mixkit Stock Video Free License; verified 2026-10-26 via web source.",
+      "input_sha256": "f4e4e50fc2d9a8306205869d6924c701c866fa6399f0469c96f99b6029e11eb4",
+      "tile_index": 2,
+      "crop": {
+        "x": 640,
+        "y": 0,
+        "width": 320,
+        "height": 180
+      }
+    },
+    {
+      "title": "Female doctor talking on a video call",
+      "mixkit_id": 4833,
+      "theme": "healthcare",
+      "source_page": "https://mixkit.co/free-stock-video/female-doctor-talking-on-a-video-call-4833/",
+      "download_url": "https://assets.mixkit.co/videos/4833/4833-720.mp4",
+      "license": "Mixkit Stock Video Free License",
+      "license_evidence": "Individual source page explicitly states commercial or personal use under the Mixkit Stock Video Free License; verified 2026-10-26 via web source.",
+      "input_sha256": "9cb13c00e322efdcd3282c3f9c0fe15c3356c32da6127e772563c6e0ba676adc",
+      "tile_index": 3,
+      "crop": {
+        "x": 960,
+        "y": 0,
+        "width": 320,
+        "height": 180
+      }
+    },
+    {
+      "title": "City during the day",
+      "mixkit_id": 2068,
+      "theme": "city",
+      "source_page": "https://mixkit.co/free-stock-video/city-during-the-day-2068/",
+      "download_url": "https://assets.mixkit.co/videos/2068/2068-720.mp4",
+      "license": "Mixkit Stock Video Free License",
+      "license_evidence": "Individual source page explicitly states commercial or personal use under the Mixkit Stock Video Free License; verified 2026-10-26 via web source.",
+      "input_sha256": "f11c94b46161fae2c4ff23689fed75b0b003c001db5ebe95b09699a0f9233d7b",
+      "tile_index": 4,
+      "crop": {
+        "x": 0,
+        "y": 180,
+        "width": 320,
+        "height": 180
+      }
+    },
+    {
+      "title": "Couple exploring a forest",
+      "mixkit_id": 43151,
+      "theme": "nature and people",
+      "source_page": "https://mixkit.co/free-stock-video/couple-exploring-a-forest-43151/",
+      "download_url": "https://assets.mixkit.co/videos/43151/43151-720.mp4",
+      "license": "Mixkit Stock Video Free License",
+      "license_evidence": "Individual source page explicitly states commercial or personal use under the Mixkit Stock Video Free License; verified 2026-10-26 via web source.",
+      "input_sha256": "9fca0f85817cf69fcbe3779b9c8e1a377a087cdf24057246991e4ac7b429ee36",
+      "tile_index": 5,
+      "crop": {
+        "x": 320,
+        "y": 180,
+        "width": 320,
+        "height": 180
+      }
+    },
+    {
+      "title": "Waves coming to the beach",
+      "mixkit_id": 5016,
+      "theme": "ocean",
+      "source_page": "https://mixkit.co/free-stock-video/waves-coming-to-the-beach-5016/",
+      "download_url": "https://assets.mixkit.co/videos/5016/5016-720.mp4",
+      "license": "Mixkit Stock Video Free License",
+      "license_evidence": "Individual source page explicitly states commercial or personal use under the Mixkit Stock Video Free License; verified 2026-10-26 via web source.",
+      "input_sha256": "2f33fee09add4410eac743e4e60e4f4fddc1152e0a715ae6b14c1692365d0a8f",
+      "tile_index": 6,
+      "crop": {
+        "x": 640,
+        "y": 180,
+        "width": 320,
+        "height": 180
+      }
+    },
+    {
+      "title": "Industrial plant working",
+      "mixkit_id": 4361,
+      "theme": "industry",
+      "source_page": "https://mixkit.co/free-stock-video/industrial-plant-working-4361/",
+      "download_url": "https://assets.mixkit.co/videos/4361/4361-720.mp4",
+      "license": "Mixkit Stock Video Free License",
+      "license_evidence": "Individual source page explicitly states commercial or personal use under the Mixkit Stock Video Free License; verified 2026-10-26 via web source.",
+      "input_sha256": "24ba13c513f1fc8c43bbe3968324afaab13100a590004dfa79cf1868b9598f98",
+      "tile_index": 7,
+      "crop": {
+        "x": 960,
+        "y": 180,
+        "width": 320,
+        "height": 180
+      }
+    }
+  ]
+}

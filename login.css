@@ -1,0 +1,102 @@
+:root{--font-body:Arial,Helvetica,sans-serif}body{margin:0} [hidden]{display:none!important}
+/* Sign-in scene (owner design "OctoMind-Login", 2026-10-26): the design's own layout (work/layout.css of the design
+   hand-over), with the e-mail / password / recovery parts replaced by the one staff-token field. Always dark: the scene
+   is a night view of the earth whatever the app theme. Loaded by the login chunk only (pages/LoginPage.tsx).
+   The bundle of the 3D wall looks for .scene and the ids world / atlas / wall-source / wall-extra / wall-hero, and adds
+   .wall-ready to .scene once its first frame is drawn. */
+.lgViewport{position:fixed;inset:0;overflow:hidden;background:#030c18;color:#f5f7ff;font-family:Inter,var(--font-body);font-synthesis:none;color-scheme:dark;
+  --brand-disc:#030c18;--brand-mark:#ffffff;--brand-word:#ffffff}
+.lgViewport *{box-sizing:border-box}
+.lgViewport button,.lgViewport input{font:inherit}
+.lgViewport button{cursor:pointer;color:inherit}
+.lgViewport button:focus-visible,.lgViewport a:focus-visible{outline:2px solid #9ed8ff;outline-offset:4px}
+.lgScene{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;isolation:isolate;
+  background:#030c18 var(--lg-earth,none) no-repeat;background-size:var(--lg-earth-size,cover);background-position:var(--lg-earth-pos,center)}
+.lgWallFallback{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;object-fit:fill;
+  clip-path:polygon(0 5%,14% 18%,24% 32%,33% 50%,38% 63%,62% 63%,67% 50%,76% 32%,86% 18%,100% 5%,100% 92.5%,0 92.5%)}
+.lgScene.wall-ready .lgWallFallback{display:none}
+.lgTexture{display:none}
+.lgWorld{position:absolute;inset:0;z-index:1;pointer-events:none}
+.lgWorld canvas{display:block;width:100%;height:100%}
+.lgAtlas{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Header: the Baiwu lockup, a hairline and the product name (OctoMind / 万物一联); the language menu on the right. */
+.lgHeader{position:absolute;top:20px;left:clamp(24px,4vw,96px);right:clamp(24px,3.5vw,84px);display:flex;align-items:center;justify-content:space-between;z-index:5}
+.lgBrand{display:flex;align-items:center;gap:16px;min-width:0}
+.lgBrand .erpBrandLockup{display:block;width:auto;height:34px;flex:none}
+.lgBrandRule{width:1px;height:28px;background:#ffffff40;flex:none}
+.lgProduct{display:flex;align-items:baseline;gap:14px;white-space:nowrap}
+.lgProductName{font-size:32px;font-weight:600;letter-spacing:-1.4px;line-height:1}
+.lgProductLine{font-size:14px;font-weight:400;color:#b2c2dc;letter-spacing:2px}
+:root:lang(en) .lgProductLine{letter-spacing:.3px}
+.lgLocale{position:relative}
+.lgLanguage{display:flex;align-items:center;gap:8px;padding:7px 0;border:0;background:transparent;font-size:13px;color:#d0d9e8}
+.lgLanguage svg{color:#bdcde6;opacity:.9}
+.lgLanguage:hover{color:#fff}
+.lgLanguageMenu{position:absolute;right:0;top:35px;min-width:125px;padding:6px;background:#101f35;border:1px solid #35465d;border-radius:7px;box-shadow:0 12px 30px #0005}
+.lgLanguageMenu button{display:block;width:100%;padding:9px 12px;border:0;border-radius:3px;background:none;text-align:left;font-size:13px;white-space:nowrap}
+.lgLanguageMenu button:hover{background:#1c3558}
+.lgLanguageMenu button[aria-checked=true]{color:#9ed8ff}
+
+/* The sign-in column. */
+.lgLogin{position:absolute;top:clamp(76px,12.48vh,170px);left:50%;transform:translateX(-50%);width:min(340px,calc(100% - 64px));z-index:4}
+.lgIntro{margin:0 0 35px;text-align:center}
+.lgIntro h1{display:flex;align-items:center;justify-content:center;min-height:126px;margin:0 0 18px;font-size:44px;font-weight:500;line-height:1.43;letter-spacing:0;text-wrap:balance;text-shadow:0 2px 24px #020b18}
+:root:lang(en) .lgIntro h1{font-size:36px;line-height:1.3;letter-spacing:-1.1px}
+.lgSubbrand{margin:0;font-size:14px;line-height:20px;font-weight:400;letter-spacing:.25px;color:#b2c0d6}
+.lgNotice{display:flex;align-items:flex-start;gap:8px;margin:0 0 18px;padding:10px 12px;border:1px solid #c9a24a80;border-radius:5px;background:#2a210c99;font-size:13px;line-height:18px;color:#f3dfae}
+.lgNotice svg{flex:none;margin-top:1px}
+.lgField label{display:block;margin-bottom:8px;font-size:14px;font-weight:500;line-height:17px;color:#d5dfee}
+.lgInputWrap{position:relative;display:flex;align-items:center}
+.lgFieldIcon{position:absolute;left:15px;color:#bdcde6;opacity:.85;pointer-events:none}
+.lgInputWrap input{width:100%;height:47px;padding:0 43px 0 47px;border:1px solid #71819b;border-radius:5px;outline:none;background:#12203880;color:#eef4ff;font-size:15px;font-weight:400;box-shadow:inset 0 1px 6px #04111d55;transition:border-color .2s,box-shadow .2s}
+.lgInputWrap input::placeholder{color:#91a1ba;opacity:1}
+.lgInputWrap input:focus{border-color:#6db9ff;box-shadow:0 0 0 3px #397de523}
+.lgInputWrap input[aria-invalid=true]{border-color:#ff8a80}
+.lgVisibility{position:absolute;right:7px;display:grid;place-items:center;width:34px;height:34px;border:0;border-radius:4px;background:none;color:#bdcde6}
+.lgVisibility:hover{background:#3f5b7a30}
+.lgField{margin-bottom:24px}
+.lgError{margin:8px 0 0;font-size:13px;line-height:18px;color:#ffb4ab}
+.lgSubmit{width:100%;height:48px;border:1px solid #397fff;border-radius:5px;background:#1766ff;color:#fff;font-size:15px;font-weight:500;letter-spacing:1px;box-shadow:0 5px 30px #0066ff26;transition:background .2s,transform .2s}
+:root:lang(en) .lgSubmit{letter-spacing:0}
+.lgSubmit:hover{background:#307bff;transform:translateY(-1px)}
+.lgSubmit:active{transform:translateY(0)}
+
+/* Footer line, the company line (bottom-left) and the scene controls (bottom-right). */
+.lgFooter{position:absolute;bottom:5.1vh;left:50%;transform:translateX(-50%);z-index:4;font-size:12px;color:#d2dced;letter-spacing:1.5px;white-space:nowrap;text-align:center;text-shadow:0 2px 9px #000}
+.lgCompany{position:absolute;left:clamp(24px,4vw,96px);bottom:22px;z-index:4;margin:0;font-size:11px;color:#94a6c2;letter-spacing:.5px}
+.lgControls{position:absolute;right:clamp(24px,3.5vw,84px);bottom:19px;z-index:4;display:flex;gap:10px}
+.lgMotion{display:flex;align-items:center;gap:7px;height:32px;padding:0 10px;border:1px solid #657c9b60;border-radius:5px;background:#07112080;font-size:11px;color:#c8d6ec;white-space:nowrap}
+.lgMotion svg{color:#bdcde6}
+.lgMotion:hover{border-color:#8eb8ec}
+
+@media(prefers-reduced-motion:reduce){.lgViewport *,.lgViewport *::before,.lgViewport *::after{transition:none!important}}
+@media(max-height:850px){
+  .lgLogin{top:9.6vh}.lgIntro{margin-bottom:18px}.lgIntro h1{min-height:97px;margin-bottom:14px;font-size:36px;line-height:1.35}
+  :root:lang(en) .lgIntro h1{font-size:32px;line-height:1.3}.lgSubbrand{line-height:18px}
+  .lgField label{margin-bottom:7px}.lgInputWrap input{height:44px;font-size:14px}.lgField{margin-bottom:18px}.lgSubmit{height:44px}.lgFooter{bottom:56px}}
+@media(max-width:650px){
+  .lgBrand{gap:10px}.lgBrand .erpBrandLockup{height:26px}.lgBrandRule{height:22px}.lgProduct{gap:8px}.lgProductName{font-size:24px}.lgProductLine{font-size:11px;letter-spacing:1px}
+  .lgLanguage{font-size:11px}.lgFooter{bottom:64px;width:90%;font-size:10px;letter-spacing:.5px;white-space:normal}.lgCompany{font-size:9px}
+  .lgMotion{font-size:10px}.lgInputWrap input{background:#0b1929e8}}
+@media(max-width:480px){.lgProductLine{display:none}.lgControls .lgMotion span{display:none}}
+@media(forced-colors:active){.lgSubmit,.lgInputWrap input,.lgMotion{border:1px solid CanvasText}}
+
+.lgScene{--lg-earth:url("media/login-scene/earth.webp")}
+.loginBrand{width:145px;height:35px;object-fit:contain;filter:brightness(0) invert(1)}
+.loginLanguages{display:flex;gap:3px;padding:3px;background:#14253b80;border:1px solid #839bb43d;border-radius:7px}
+.loginLanguages button{border:0;background:transparent;border-radius:4px;font-size:12px;font-weight:600;padding:8px 11px;color:#bbcbdf}
+.loginLanguages button[aria-pressed=true]{background:#eaf4ff;color:#102e4f}
+.lgLogin{width:min(360px,calc(100% - 48px))}
+.loginEyebrow{font:600 11px/18px var(--font-body);letter-spacing:2.4px;color:#8fc9ee;margin:0 0 14px}
+.lgIntro h1,:root:lang(en) .lgIntro h1{font-size:38px;line-height:1.2;font-weight:500;letter-spacing:-1.1px;min-height:92px;margin:0 0 14px}
+.lgSubmit{display:flex;align-items:center;justify-content:center;gap:20px;letter-spacing:0;font-weight:600}
+.lgSubmit:disabled{cursor:wait;opacity:.65}
+.lgInputWrap input{background:#0a1a2cdb}
+.lgIntro{margin-bottom:28px}
+.lgProductName{font-size:26px;letter-spacing:-.7px}
+.lgVisibility #eye-slash{display:none}
+@media(max-height:850px){.lgLogin{top:13vh}.lgIntro h1,:root:lang(en) .lgIntro h1{font-size:32px;min-height:77px}.lgIntro{margin-bottom:22px}.loginEyebrow{margin-bottom:9px}}
+@media(max-width:650px){.lgHeader{top:18px;left:20px;right:20px}.loginBrand{width:112px;height:28px}.lgBrand{gap:12px}.lgProductName{font-size:19px}.loginLanguages button{padding:7px 8px;font-size:11px}.lgLogin{top:17vh;padding:24px 20px;border:1px solid #587da24a;border-radius:14px;background:linear-gradient(160deg,#0c1e32eb,#07111edf);box-shadow:0 20px 65px #0005;backdrop-filter:blur(14px)}.lgIntro h1,:root:lang(en) .lgIntro h1{font-size:30px}.lgCompany{bottom:20px;left:20px}.lgControls{right:20px}.lgFooter{bottom:70px}.lgWorld{opacity:.65}}
+@media(max-width:380px){.lgBrandRule{display:none}.lgProductName{font-size:16px}.loginBrand{width:95px}.lgBrand{gap:9px}.lgHeader{left:14px;right:14px}.lgLogin{width:calc(100% - 32px)}}
+@media(max-height:560px) and (min-width:651px){.lgHeader{top:12px}.lgLogin{top:60px;width:320px}.loginEyebrow{display:none}.lgIntro h1,:root:lang(en) .lgIntro h1{font-size:28px;min-height:65px;margin-bottom:6px}.lgIntro{margin-bottom:12px}.lgField{margin-bottom:12px}.lgFooter{bottom:48px}}
