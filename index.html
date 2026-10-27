@@ -1622,18 +1622,35 @@ body[data-source-mode=public] #page-comms,body[data-source-mode=public] #page-wo
  #page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=camera] .vessel-multi-screen,#page-overview[data-vessel-cameras=true][data-multi-view=true][data-command-view=camera] .vessel-multiview-grid[data-count="2"] .vessel-multi-screen{width:100%;height:auto;aspect-ratio:16/9;max-height:none}
 }
 
-#map-basemap-status[data-map-information=true] #map-source-credit{display:none!important}
-.map-information-disclosure{position:relative;display:flex;align-items:center;justify-content:center;flex:none;overflow:visible}
-.map-information-toggle{display:flex;align-items:center;justify-content:center;width:30px;height:30px;min-width:30px;min-height:30px;padding:0;border:1px solid #c5d5e0;border-radius:7px;background:#fff;color:#365d79;font-family:Georgia,serif;font-size:20px;font-weight:700;line-height:1;box-shadow:0 1px 5px #284d671a;cursor:pointer}
-.map-information-toggle:focus-visible,.map-information-close:focus-visible{outline:3px solid #71a9d4;outline-offset:2px}
-.map-information-panel[hidden]{display:none!important}
-.map-information-panel{position:absolute;right:0;bottom:38px;z-index:15;width:295px;max-width:calc(100vw - 40px);padding:11px 12px;background:#fff;border:1px solid #c7d9e6;border-radius:8px;box-shadow:0 5px 20px #24465f25;color:#2f536d;text-align:left}
-.map-information-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}.map-information-heading>b{font-size:13px;line-height:1.3;color:#234b68}.map-information-close{display:flex;align-items:center;justify-content:center;width:25px;height:25px;min-height:25px;padding:0;border:0;border-radius:4px;background:#f0f5f9;color:#55758b;font-size:20px;line-height:1}
-.map-information-links{font-size:12px;line-height:1.7;white-space:normal}.map-information-links a{color:#245f88;text-decoration:underline;text-underline-offset:2px}.map-information-links a:focus-visible{outline:2px solid #71a9d4;outline-offset:2px;border-radius:2px}
-#map-basemap-status[data-map-information=true][data-map-state=ready]{padding:0;background:transparent;border:0;box-shadow:none;min-height:30px;overflow:visible}
-@media(max-width:767px),(max-width:1000px) and (max-height:500px){
- .map-information-toggle{width:36px;height:36px;min-width:36px;min-height:36px;font-size:22px;border-radius:8px}
- .map-information-panel{bottom:44px;width:270px;max-width:calc(100vw - 54px);padding:12px}.map-information-heading>b{font-size:14px}.map-information-close{width:31px;height:31px;min-height:31px;font-size:23px}.map-information-links{font-size:13px;line-height:1.75}
+#map-basemap-status[data-map-information=about] #map-source-credit{display:none!important}
+#map-basemap-status[data-map-information=about][data-map-state=ready]{display:none!important}
+.map-attribution-startup[hidden]{display:none!important}
+.map-attribution-startup{position:fixed;z-index:900;bottom:10px;left:50%;transform:translateX(-50%);max-width:calc(100vw - 36px);padding:7px 12px;border:1px solid #d3e0e9;border-radius:6px;background:#fff;color:#45677f;box-shadow:0 2px 10px #204b6514;font-size:12px;line-height:1.5;text-align:center}
+.map-attribution-startup a,.map-credits-about a{color:#285f88;text-decoration:underline;text-underline-offset:2px}
+.map-credits-about{margin-top:18px;padding-top:14px;border-top:1px solid #dce6ee}.map-credits-about h3{font-size:17px;color:#214b69;margin:0 0 10px}.map-credits-about p{font-size:13px;line-height:1.7;margin:5px 0}
+@media(max-width:767px),(max-width:1000px) and (max-height:500px){.map-attribution-startup{bottom:calc(86px + env(safe-area-inset-bottom,0px));width:calc(100vw - 32px);font-size:12px;line-height:1.6;padding:8px 10px}.map-credits-about h3{font-size:18px}.map-credits-about p{font-size:14px;line-height:1.7}}
+
+/* Apply to every native select, including dynamically created dialog fields. */
+select{font-size:16px!important;line-height:1.4!important;color-scheme:light}
+.vessel-camera-toolbar select{font-size:17px!important}
+select option,select optgroup{font-family:var(--sans,"Segoe UI",Arial,sans-serif)!important;font-size:var(--dropdown-option-font,18px)!important;font-weight:500!important;line-height:1.5!important;color:#143c59!important;background:#fff!important;padding:8px 12px!important}
+select optgroup{font-weight:700!important}
+select:focus-visible{outline:3px solid #6da9dc;outline-offset:2px}
+@media(max-width:767px),(max-width:1000px) and (max-height:500px){select,.vessel-camera-toolbar select{font-size:16px!important;min-height:44px!important}select option,select optgroup{font-size:18px!important}}
+/* Progressive enhancement: supported browsers render the native picker in the
+ * untransformed top layer, so option text and tap targets stay a readable size.
+ * Older browsers retain the native menu and canvas font compensation above.
+ */
+@supports(appearance:base-select){
+ select,select::picker(select){appearance:base-select}
+ select::picker(select){font-family:var(--sans,"Segoe UI",Arial,sans-serif);font-size:18px!important;line-height:1.5;color:#143c59;background:#fff;border:1px solid #abc4d5;border-radius:9px;box-shadow:0 8px 28px #15374d2b;padding:5px;min-width:anchor-size(width);max-width:calc(100vw - 24px);max-height:min(380px,60vh);overflow-y:auto;margin-block:5px;scrollbar-width:thin}
+ select option,select optgroup{font-size:18px!important;line-height:1.5!important}
+ select option{min-height:44px;padding:10px 14px!important;white-space:normal;border-radius:5px;gap:12px;align-items:center;cursor:pointer}
+ select option:hover,select option:focus-visible{background:#edf5fc!important;color:#123e60!important;outline:none}
+ select option:checked{background:#e5f1fc!important;color:#075b95!important;font-weight:600!important}
+ select option:disabled{color:#7c8c98!important;background:#f5f7f9!important;cursor:not-allowed}
+ select optgroup{padding:6px!important}
+ select::picker-icon{color:#54758e;flex:none;margin-inline-start:8px}
 }
 
 </style></head><body data-source-mode="demo"><div id="stage"><div id="app-frame">
@@ -4157,43 +4174,57 @@ function start(){if(publicSourceMode()){running=false;startPublicSource();return
  };
 })();
 
-/* Compact map attribution disclosure. OSMF interactive-map guidance allows
- * automatic collapse after five seconds with an accessible information entry.
+/* Map attribution appears briefly at startup, then remains in Settings > About.
+ * No map information icon or disclosure is placed on the map.
  * https://osmfoundation.org/wiki/Licence/Attribution_Guidelines#Interactive_maps
- * Original provider/source links are preserved in a stable disclosure panel.
  */
 (function installMapInformation(){
  'use strict';
  const delay=5000,completed=new Set();
- let host=null,panel=null,button=null,heading=null,closeButton=null,links=null,source='',expanded=true,manual=false,remaining=delay,timer=null,startedAt=null;
- const visible=()=>typeof ready!=='undefined'&&ready&&route==='overview'&&document.hidden!==true;
+ const creditLinks='<a href="https://openfreemap.org/" target="_blank" rel="noopener">OpenFreeMap</a> · <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener">© OpenMapTiles</a> · <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors</a>';
+ const outlineLink='<a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">Natural Earth</a>';
+ let notice=null,source='',remaining=delay,timer=null,startedAt=null;
+ const visible=()=>typeof ready!=='undefined'&&ready&&document.hidden!==true;
  function pause(){if(timer!==null){clearTimeout(timer);timer=null;if(startedAt!==null)remaining=Math.max(0,remaining-(Date.now()-startedAt));startedAt=null;}}
- function mount(){
-  if(host)return true;const bar=$('map-basemap-status'),original=$('map-source-credit');if(!bar||!original||!original.innerHTML)return false;
-  host=document.createElement('div');host.className='map-information-disclosure';host.id='map-information-disclosure';
-  button=document.createElement('button');button.type='button';button.className='map-information-toggle';button.id='map-information-toggle';button.textContent='i';button.setAttribute('aria-controls','map-information-panel');button.addEventListener('click',()=>setExpanded(!expanded,true));
-  panel=document.createElement('section');panel.className='map-information-panel';panel.id='map-information-panel';panel.setAttribute('role','region');panel.setAttribute('aria-labelledby','map-information-heading');
-  const top=document.createElement('div');top.className='map-information-heading';heading=document.createElement('b');heading.id='map-information-heading';closeButton=document.createElement('button');closeButton.type='button';closeButton.className='map-information-close';closeButton.textContent='×';closeButton.addEventListener('click',()=>{setExpanded(false,true);button.focus();});top.appendChild(heading);top.appendChild(closeButton);panel.appendChild(top);
-  links=document.createElement('div');links.className='map-information-links';links.id='map-information-links';panel.appendChild(links);
-  panel.addEventListener('focusin',()=>{manual=true;pause();});panel.addEventListener('mouseenter',()=>{manual=true;pause();});panel.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();setExpanded(false,true);button.focus();}});
-  host.appendChild(button);host.appendChild(panel);bar.appendChild(host);bar.dataset.mapInformation='true';return true;
- }
- function setExpanded(value,user=false){if(!mount())return false;if(user){manual=true;pause();}expanded=!!value;update();return true;}
- function update(){
-  if(!host)return;panel.hidden=!expanded;button.setAttribute('aria-expanded',String(expanded));button.setAttribute('aria-label',tr(expanded?'Hide map information':'Map information',expanded?'Sembunyikan maklumat peta':'Maklumat peta'));button.title=tr('Map information','Maklumat peta');heading.textContent=tr('Map information','Maklumat peta');closeButton.setAttribute('aria-label',tr('Close map information','Tutup maklumat peta'));
-  if(!visible()||manual||!expanded||completed.has(source)){pause();return;}
-  if(timer!==null)return;startedAt=Date.now();timer=setTimeout(()=>{timer=null;startedAt=null;if(!visible()){remaining=delay;return;}if(manual)return;completed.add(source);remaining=0;expanded=false;update();},remaining);
- }
+ function mount(){if(notice)return true;const bar=$('map-basemap-status'),original=$('map-source-credit');if(!bar||!original||!original.innerHTML)return false;notice=document.createElement('div');notice.id='map-attribution-startup';notice.className='map-attribution-startup';notice.setAttribute('role','note');document.body.appendChild(notice);bar.dataset.mapInformation='about';return true;}
  function render(){
   if(!mount())return;const current=$('map-source-credit').innerHTML;
-  if(current&&current!==source){pause();source=current;links.innerHTML=current;if(!manual){expanded=!completed.has(source);remaining=delay;}}
-  update();
+  if(current&&current!==source){pause();source=current;notice.innerHTML=current;remaining=delay;}
+  notice.hidden=!visible()||completed.has(source);
+  if(notice.hidden){pause();return;}
+  if(timer!==null)return;startedAt=Date.now();timer=setTimeout(()=>{timer=null;startedAt=null;if(!visible()){remaining=delay;return;}completed.add(source);remaining=0;notice.hidden=true;},remaining);
  }
+ const originalAbout=demoAboutDialog;demoAboutDialog=function(){const result=originalAbout.apply(this,arguments),body=$('modal-body');if(body&&!$('map-credits-about')){const section=document.createElement('section');section.id='map-credits-about';section.className='map-credits-about';section.innerHTML='<h3>'+esc(tr('Map credits','Kredit peta'))+'</h3><p>'+creditLinks+'</p><p>'+outlineLink+'</p>';body.appendChild(section);}return result;};
  const originalMapState=renderOnlineMapState;renderOnlineMapState=function(){const result=originalMapState.apply(this,arguments);render();return result;};
  const originalRender=renderAll;renderAll=function(){const result=originalRender.apply(this,arguments);render();return result;};
- document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();else render();});
- window.addEventListener('pagehide',pause);window.addEventListener('pageshow',render);
- window.MapInformation={render,show(){return setExpanded(true,true);},hide(){return setExpanded(false,true);},toggle(){return setExpanded(!expanded,true);},getState(){return{expanded,manual,remainingMs:timer!==null?Math.max(0,remaining-(Date.now()-startedAt)):remaining,sourceHtml:source,delayMs:delay};}};
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();else render();});window.addEventListener('pagehide',pause);window.addEventListener('pageshow',render);
+ window.MapInformation={render,openAbout(){demoAboutDialog();},show(){demoAboutDialog();},getState(){return{noticeVisible:!!notice&&!notice.hidden,placement:'startup-notice-and-settings-about',mapControl:false,remainingMs:timer!==null?Math.max(0,remaining-(Date.now()-startedAt)):remaining,sourceHtml:source,delayMs:delay};}};
+})();
+
+/* Native menu options inherit the presentation canvas scale in Chromium.
+ * Compensate option text on the canvas only; keep browser-native selection,
+ * focus, keyboard navigation and change handlers intact.
+ */
+(function installDropdownReadability(){
+ 'use strict';
+ const target=18;
+ let last='';
+ function refresh(){
+  const frame=document.getElementById('app-frame');if(!frame)return;
+  const width=frame.offsetWidth,shown=frame.getBoundingClientRect().width;
+  const scale=width>0&&shown>0?Math.min(1,Math.max(.25,shown/width)):1;
+  const size=(target/scale).toFixed(2)+'px';
+  if(size!==last){frame.style.setProperty('--dropdown-option-font',size);last=size;}
+ }
+ if(typeof resizePresentation==='function'){
+  const original=resizePresentation;
+  resizePresentation=function(){const result=original.apply(this,arguments);refresh();return result;};
+ }
+ document.addEventListener('pointerdown',event=>{if(event.target?.closest?.('select'))refresh();},true);
+ document.addEventListener('focusin',event=>{if(event.target?.tagName==='SELECT')refresh();},true);
+ window.addEventListener('resize',refresh);window.addEventListener('pageshow',refresh);
+ refresh();
+ window.DropdownReadability={refresh,targetOptionPixels:target};
 })();
 
 start();
