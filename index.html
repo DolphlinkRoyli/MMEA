@@ -1647,7 +1647,8 @@ select:focus-visible{outline:3px solid #6da9dc;outline-offset:2px}
  select option:checked{background:#e5f1fc!important;color:#075b95!important;font-weight:500!important}
  select option:disabled{color:#7c8c98!important;background:#f5f7f9!important;cursor:not-allowed}
  select optgroup{padding:6px!important}
- select::picker-icon{color:#54758e;flex:none;margin-inline-start:8px}
+ select{display:inline-flex;align-items:center;justify-content:space-between;gap:8px}
+ select::picker-icon{color:#54758e;flex:none;margin-inline-start:auto}
 }
 
 /* Shared UI icon scale. Only controls and named icon slots are affected;
@@ -1688,6 +1689,124 @@ select:focus-visible{outline:3px solid #6da9dc;outline-offset:2px}
 @media(max-width:767px),(max-width:1000px) and (max-height:500px){
  #app-frame button.icon-button,#modal button.icon-button{min-width:44px;min-height:44px}
 }
+
+#app-frame .report-result-symbol{width:32px;height:32px;flex:0 0 32px;font-size:18px;line-height:1}
+
+/* Desktop presentation: reserve enough room for both the issue queue and
+   every human action. Mobile keeps its existing stacked, scrolling layout. */
+body[data-layout=desktop] #page-work .page-heading{min-height:40px;height:40px;margin-bottom:10px;align-items:center}
+body[data-layout=desktop] #page-work .page-heading h1{font-size:25px;line-height:1.2}
+body[data-layout=desktop] #page-work .work-journey{gap:14px;margin-bottom:10px}
+body[data-layout=desktop] #page-work .work-step{min-height:108px;padding:9px 12px;gap:3px;display:grid;grid-template-columns:28px minmax(0,1fr);grid-template-rows:22px auto auto;align-content:start;column-gap:8px}
+body[data-layout=desktop] #page-work .work-actor{grid-column:1/-1;min-height:0;font-size:11px}
+body[data-layout=desktop] #page-work .work-step-icon{grid-column:1;grid-row:2/4;align-self:center}
+body[data-layout=desktop] #page-work .work-step>b{grid-column:2;font-size:14px;line-height:1.3;align-self:end}
+body[data-layout=desktop] #page-work .work-step>small{grid-column:2;font-size:12px;line-height:1.3}
+body[data-layout=desktop] #page-work .work-step:not(:last-child)::after{top:48px}
+body[data-layout=desktop] #page-work .slack-remediation-entry{padding:8px 12px;margin-bottom:10px;gap:12px;min-height:52px}
+body[data-layout=desktop] #page-work .work-grid{gap:14px;grid-template-columns:minmax(0,1fr) 380px}
+body[data-layout=desktop] #page-work .work-grid>.table-surface{overflow:visible;display:flex;flex-direction:column;min-height:0}
+body[data-layout=desktop] #work-analysis{padding:10px 14px;display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;align-content:start}
+body[data-layout=desktop] #work-analysis>.decision-heading{grid-column:1/-1;margin-bottom:0}
+body[data-layout=desktop] #work-analysis>.decision-values{grid-column:1;margin:0;gap:12px}
+body[data-layout=desktop] #work-analysis>.decision-values b{font-size:18px;line-height:1.3}
+body[data-layout=desktop] #work-analysis>.decision-next{grid-column:2;grid-row:2/4;align-self:center}
+body[data-layout=desktop] #work-analysis>p{grid-column:1;margin:0;font-size:12px;line-height:1.4}
+body[data-layout=desktop] #page-work .alert-notification-strip{padding:9px 14px}
+body[data-layout=desktop] #page-work .notification-strip-head{margin-bottom:6px}
+body[data-layout=desktop] #page-work .notification-channel{min-height:45px;padding:6px 9px}
+body[data-layout=desktop] #page-work .notification-strip-foot{margin-top:4px}
+body[data-layout=desktop] #page-work .section-bar{padding:8px 14px;min-height:46px;flex-shrink:0}
+body[data-layout=desktop] #page-work .work-detail{padding:12px 16px;overflow:visible;min-height:0}
+body[data-layout=desktop] #page-work .issue-heading{padding-bottom:6px;margin-bottom:6px}
+body[data-layout=desktop] #page-work .work-condition{padding:6px 0 8px;margin-bottom:7px}
+body[data-layout=desktop] #page-work .work-detail textarea{min-height:64px;height:64px;resize:none;margin-bottom:0}
+body[data-layout=desktop] #page-work .work-detail .form-label{margin-top:8px;margin-bottom:4px}
+body[data-layout=desktop] #page-work #record-inspection{margin-top:7px;min-height:38px}
+body[data-layout=desktop] #page-work #review-role{min-height:38px;height:38px}
+body[data-layout=desktop] #page-work #close-work{margin-top:9px;min-height:38px}
+
+/* Desktop report workspace: compact controls, three-row comparison pages, full details on demand. */
+body[data-layout=desktop] #page-reports{padding:16px 20px;overflow:visible}
+body[data-layout=desktop] #page-reports .report-heading{margin-bottom:10px}
+body[data-layout=desktop] #page-reports .report-heading h1{font-size:25px;margin:3px 0}
+body[data-layout=desktop] #page-reports .report-flow{margin-bottom:12px}
+body[data-layout=desktop] #page-reports .report-flow>div{padding:9px 14px}
+body[data-layout=desktop] #page-reports .report-layout{grid-template-columns:330px minmax(0,1fr);gap:14px;align-items:stretch}
+body[data-layout=desktop] #page-reports .report-controls{padding:14px;overflow:visible}
+body[data-layout=desktop] #page-reports .report-basis-copy{margin:6px 0;line-height:1.4}
+body[data-layout=desktop] #page-reports .report-snapshot{padding:8px 10px;gap:3px}
+body[data-layout=desktop] #page-reports .report-controls>label:not(.report-upload):not(.report-coverage){margin:10px 0 5px;font-size:12px}
+body[data-layout=desktop] #page-reports .report-template-heading{margin:10px 0 6px;font-size:12px}
+body[data-layout=desktop] #page-reports .report-upload{min-height:92px;margin:10px 0 8px;padding:10px;display:grid;grid-template-columns:34px auto;gap:4px 10px}
+body[data-layout=desktop] #page-reports .report-upload>span{grid-row:1/3;margin:0;font-size:24px}
+body[data-layout=desktop] #page-reports .report-upload>small{margin:0}
+body[data-layout=desktop] #page-reports .report-coverage{margin-top:8px;font-size:11px}
+body[data-layout=desktop] #page-reports .report-format-note{font-size:10px;line-height:1.4;margin-top:8px}
+body[data-layout=desktop] #page-reports .report-schema-open{margin-top:5px;font-size:11px}
+body[data-layout=desktop] #page-reports .report-results{min-height:0;overflow:visible}
+body[data-layout=desktop] #page-reports .report-result-head{padding:13px 17px;gap:12px}
+body[data-layout=desktop] #page-reports .report-result-head>div{min-width:0}
+body[data-layout=desktop] #page-reports .report-result-head h2{font-size:22px;margin:4px 0}
+body[data-layout=desktop] #page-reports .report-result-head p{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:720px}
+body[data-layout=desktop] #page-reports .report-counts{padding:10px 17px}
+body[data-layout=desktop] #page-reports .report-counts b{font-size:23px}
+body[data-layout=desktop] #page-reports .report-ready-state{flex:1;min-height:80px;padding:15px}
+body[data-layout=desktop] #page-reports .report-comparison-scope{padding:7px 17px;font-size:11px}
+body[data-layout=desktop] #page-reports .report-difference-table{max-height:none;overflow:visible;flex:1}
+body[data-layout=desktop] #page-reports .report-difference-table th{padding:8px 10px;font-size:11px}
+body[data-layout=desktop] #page-reports .report-difference-table td{padding:7px 10px;line-height:1.35;font-size:12px}
+body[data-layout=desktop] #page-reports .report-difference-table tr[hidden]{display:none!important}
+body[data-layout=desktop] #page-reports .report-email-controls{padding:12px 17px;gap:6px;border-top:1px solid #e1eaf1;margin-top:auto}
+body[data-layout=desktop] #page-reports .report-email-controls>div:first-child{margin-bottom:0}
+body[data-layout=desktop] #page-reports .report-email-controls>input{min-height:34px;padding:6px 10px}
+body[data-layout=desktop] #page-reports .report-email-actions button{min-height:34px;padding:7px 10px;font-size:11px}
+body[data-layout=desktop] #page-reports .report-fit-pager{display:flex;align-items:center;justify-content:flex-end;gap:10px;padding:6px 10px;border-top:1px solid #e5edf3;font-size:12px}
+body[data-layout=desktop] #page-reports .report-fit-pager button,body[data-layout=desktop] #page-reports .report-fit-details{min-height:28px;padding:4px 8px;font-size:12px}
+body[data-layout=desktop] #page-reports .report-fit-details{border:1px solid #d0e1ec;border-radius:5px;background:#f8fbfd;color:#175a82}
+body[data-layout=desktop] #page-reports .report-fit-missing{padding:6px 10px;background:#fff9ef}
+.report-fit-record{overflow-wrap:anywhere}.report-fit-record table{width:100%}.report-fit-record td{padding:9px;font-size:13px;vertical-align:top}.report-fit-record .report-difference{font-size:13px}
+
+body[data-layout=desktop] #page-assets .page-heading,body[data-layout=desktop] #page-comms .page-heading{min-height:54px;margin-bottom:8px}
+body[data-layout=desktop] #page-assets .table-surface td{padding:7px 12px}
+body[data-layout=desktop] #page-comms .comms-control-bar{padding:7px 14px}
+body[data-layout=desktop] #page-comms .alert-notification-strip{padding:9px 14px}
+body[data-layout=desktop] #page-comms .notification-strip-head{margin-bottom:6px}
+body[data-layout=desktop] #page-comms .notification-channel{min-height:45px;padding:6px 9px}
+body[data-layout=desktop] #page-comms .notification-strip-foot{margin-top:4px}
+body[data-layout=desktop] #page-comms .comms-chain{margin:8px 0;gap:12px}
+body[data-layout=desktop] #page-comms .comms-chain>div{min-height:120px;padding:12px 18px;display:grid;grid-template-columns:1fr auto;gap:3px 10px}
+body[data-layout=desktop] #page-comms .comms-chain h2{font-size:18px;margin:0;grid-column:1/-1}
+body[data-layout=desktop] #page-comms .comms-chain small{font-size:13px;margin:0;min-height:0}
+body[data-layout=desktop] #page-comms .comms-chain b{grid-column:2;grid-row:2/4;font-size:32px;margin:0;align-self:center}
+body[data-layout=desktop] #page-comms .comms-chain p{font-size:13px}
+body[data-layout=desktop] #page-comms .comms-try{padding:7px 14px;gap:0 12px}
+body[data-layout=desktop] #page-comms .comms-outcome{padding:5px 12px;margin-bottom:6px}
+body[data-layout=desktop] #page-comms .comms-payload{padding:7px 0;margin-bottom:0}
+body[data-layout=desktop] #page-comms .trace-heading{padding:6px 0;min-height:42px}
+body[data-layout=desktop] #page-comms .trace-scroll{min-height:0}
+body[data-layout=desktop] .screen-paged{position:relative;padding-bottom:40px;overflow:visible!important;min-height:0}
+body[data-layout=desktop] .screen-paged table{flex:none;table-layout:fixed;width:100%}
+body[data-layout=desktop] tr[data-screen-hidden]{display:none!important}
+.screen-pager{position:absolute;bottom:0;left:0;right:0;height:38px;display:flex;align-items:center;justify-content:flex-end;gap:12px;padding:3px 12px;border-top:1px solid #d7e2ed;background:#fff;font-size:12px}
+.screen-pager button{min-height:30px;padding:3px 10px;font-size:13px}
+body[data-layout=mobile] .screen-pager{display:none}
+
+body[data-layout=desktop] #page-comms{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:54px 58px 145px 30px 50px 70px 42px minmax(0,1fr);gap:6px 12px}
+body[data-layout=desktop] #page-comms>div{grid-column:1/-1;margin:0}
+body[data-layout=desktop] #page-comms>.comms-chain{grid-column:1;grid-row:3;margin:0;grid-template-columns:1fr 18px 1fr 18px 1fr;gap:5px;align-items:stretch}
+body[data-layout=desktop] #page-comms .comms-chain>div{padding:10px;min-height:0;display:flex;flex-direction:column;gap:4px}
+body[data-layout=desktop] #page-comms .comms-chain h2{font-size:16px;padding-right:0;min-height:40px}
+body[data-layout=desktop] #page-comms .comms-chain b{font-size:28px;align-self:flex-start}
+body[data-layout=desktop] #page-comms .comms-chain small{font-size:12px}
+body[data-layout=desktop] #page-comms .comms-chain p{font-size:12px}
+body[data-layout=desktop] #page-comms .comms-chain .comms-step{position:absolute;top:5px;right:5px;font-size:10px}
+body[data-layout=desktop] #page-comms .comms-chain>i{width:18px}
+body[data-layout=desktop] #alert-notifications-comms{grid-column:2;grid-row:3;border-radius:8px;align-content:center}
+body[data-layout=desktop] #page-comms .notification-channel{padding:6px;gap:5px}
+body[data-layout=desktop] #page-comms .notification-channel b{font-size:13px}
+body[data-layout=desktop] #page-comms .notification-strip-head small{font-size:10px}
+body[data-layout=desktop] #page-comms .notification-strip-foot{font-size:10px}
 
 </style></head><body data-source-mode="demo"><div id="stage"><div id="app-frame">
 <header><div class="identity"><a class="provider-brand" href="https://www.talktidetech.com/" target="_blank" rel="noopener" aria-label="Talktide — solution provider"><span data-t="solutionBy">Solution by</span><img src="data:image/webp;base64,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" width="145" height="35" alt="Talktide"></a><div class="customer-identity"><b>MMEA / APMM</b><small data-t="agencyName">Malaysian Maritime Enforcement Agency</small></div></div><div class="header-context"><span data-t="productName">Integrated asset monitoring</span><b id="header-route" role="heading" aria-level="1">Overview</b><div id="header-summary" class="header-summary"></div></div><div class="header-tools"><span class="data-context" data-t="demonstration">Demo</span><div class="language"><button id="lang-en" onclick="setLang('en')">EN</button><button id="lang-ms" onclick="setLang('ms')">BM</button></div><button id="scale-fill" onclick="setScale('fill')" data-t="fill">Fill</button><button id="scale-fit" onclick="setScale('fit')" data-t="fit">Fit</button><button id="scale-native" onclick="setScale('native')">1:1</button><button id="presentation-fullscreen" onclick="fullscreen()" data-t="fullScreen">Full screen</button><button class="icon-button" onclick="openHelp()" aria-label="Scope and help"><span data-icon="circle-alert"></span></button></div></header>
@@ -4246,5 +4365,66 @@ function start(){if(publicSourceMode()){running=false;startPublicSource();return
 
 /* Icon dimensions are resolved by scoped CSS; no render loop or DOM observer. */
 
+/* Work-page fitting is CSS-only; original workflow actions and state remain intact. */
+
+/* Paginate desktop comparison records without replacing the report engine or files. */
+(function installReportFit(){
+ 'use strict';
+ let observer,pageIndex=0,lastTable=null;
+ const text=(en,ms)=>typeof tr==='function'?tr(en,ms):en;
+ function update(){
+  const page=document.getElementById('page-reports');if(!page)return;
+  observer?.disconnect();
+  const desktop=document.body.dataset.layout==='desktop';
+  const area=page.querySelector('.report-difference-table'),table=area?.querySelector('table');
+  if(table){
+   if(table!==lastTable){pageIndex=0;lastTable=table;}
+   const rows=[...table.querySelectorAll('tbody>tr')];
+   if(desktop){
+    rows.forEach(row=>{const cell=row.children[2];if(cell&&!cell.dataset.fitDetails&&(cell.querySelectorAll('.report-difference').length>1||cell.textContent.length>180)){cell.dataset.fitDetails='true';const details=cell.innerHTML;const summary=document.createElement('div');summary.className='report-fit-row-summary';summary.textContent=row.querySelector('.report-row-status')?.textContent||text('Comparison','Perbandingan');const button=document.createElement('button');button.className='report-fit-details';button.textContent=text('View values','Lihat nilai');button.onclick=()=>openModal(text('Record comparison','Perbandingan rekod'),'<div class="report-fit-record">'+details+'</div>');cell.replaceChildren(summary,button);cell._reportFullContents=details;}});
+    const pages=Math.max(1,Math.ceil(rows.length/3));pageIndex=Math.min(pageIndex,pages-1);rows.forEach((r,i)=>r.hidden=i<pageIndex*3||i>=(pageIndex+1)*3);
+    let pager=area.querySelector('.report-fit-pager');if(!pager){pager=document.createElement('div');pager.className='report-fit-pager';area.append(pager);}pager.replaceChildren();
+    const prev=document.createElement('button'),next=document.createElement('button'),label=document.createElement('span');prev.textContent=text('Previous','Sebelum');next.textContent=text('Next','Seterusnya');prev.disabled=pageIndex===0;next.disabled=pageIndex===pages-1;label.textContent=text('Page ','Halaman ')+(pageIndex+1)+' / '+pages+' · '+rows.length+' '+text('records','rekod');prev.onclick=()=>{pageIndex--;update();};next.onclick=()=>{pageIndex++;update();};pager.append(prev,label,next);
+    const missing=area.querySelector('.report-missing');if(missing){const contents=missing.innerHTML;const replacement=document.createElement('div');replacement.className='report-fit-missing';replacement._originalMissing=missing;const button=document.createElement('button');button.className='report-fit-details';button.textContent=text('View missing records','Lihat rekod tiada');button.onclick=()=>openModal(text('Missing snapshot records','Rekod syot kilat yang tiada'),contents);replacement.append(button);missing.replaceWith(replacement);}
+   }else{rows.forEach(row=>{row.hidden=false;const cell=row.children[2];if(cell?.dataset.fitDetails){cell.innerHTML=cell._reportFullContents;delete cell.dataset.fitDetails;}});area.querySelector('.report-fit-pager')?.remove();const saved=area.querySelector('.report-fit-missing');if(saved?._originalMissing)saved.replaceWith(saved._originalMissing);}
+  }
+  page.querySelectorAll('.report-result-head p').forEach(p=>p.title=p.textContent);
+  observer?.observe(page,{childList:true,subtree:true});
+ }
+ if(typeof MutationObserver!=='undefined')observer=new MutationObserver(update);
+ window.addEventListener('resize',update);
+ const original=renderAll;renderAll=function(){const result=original.apply(this,arguments);update();return result;};
+ window.ReportScreenFit={refresh:update};update();
+})();
+
+(function(){
+ const pages=new Map();let pending=false;
+ function refresh(){pending=false;const mobile=document.body.dataset.layout==='mobile';
+ for(const id of ['asset-table','trace-table','issue-table']){
+ const body=document.getElementById(id);if(!body)continue;const table=body.closest('table'),box=table?.closest('.table-surface');if(!box)continue;
+ const rows=[...body.rows];rows.forEach(r=>r.removeAttribute('data-screen-hidden'));
+ let state=pages.get(id);if(!state){state={page:0};pages.set(id,state);}
+ let pager=box.querySelector('.screen-pager');
+ if(mobile){box.classList.remove('screen-paged');if(pager)pager.hidden=true;continue;}
+ if(!box.getBoundingClientRect().height)continue;
+ box.classList.add('screen-paged');
+ if(!pager){pager=document.createElement('div');pager.className='screen-pager';pager.innerHTML='<span></span><button type="button" data-direction="-1"></button><button type="button" data-direction="1"></button>';box.append(pager);pager.addEventListener('click',e=>{const b=e.target.closest('button');if(b){state.page+=Number(b.dataset.direction);refresh();}});}
+ pager.hidden=false;
+ const scale=document.getElementById('app-frame').getBoundingClientRect().width/1600;
+ const bottom=Math.min(box.getBoundingClientRect().bottom,box.closest('.page').getBoundingClientRect().bottom);
+ const available=bottom-body.getBoundingClientRect().top-42*scale;
+ let used=0,count=0;for(const row of rows){const h=row.getBoundingClientRect().height;if(used+h>available+1)break;used+=h;count++;}
+ count=Math.max(1,count);const total=Math.max(1,Math.ceil(rows.length/count));state.page=Math.max(0,Math.min(state.page,total-1));
+ rows.forEach((r,i)=>{if(i<state.page*count||i>=(state.page+1)*count)r.setAttribute('data-screen-hidden','');});
+ const ms=document.documentElement.lang==='ms';const text=(rows.length?state.page*count+1:0)+'–'+Math.min(rows.length,(state.page+1)*count)+' / '+rows.length;
+ const label=pager.querySelector('span');if(label.textContent!==text)label.textContent=text;
+ const buttons=pager.querySelectorAll('button');for(let i=0;i<2;i++){const value=i?(ms?'Seterusnya':'Next'):(ms?'Sebelumnya':'Previous');if(buttons[i].textContent!==value)buttons[i].textContent=value;buttons[i].disabled=i?state.page>=total-1:state.page===0;}
+ }
+ }
+ function schedule(){if(!pending){pending=true;requestAnimationFrame(refresh);}}
+ function init(){new MutationObserver(ms=>{if(ms.some(m=>!m.target.closest?.('.screen-pager')))schedule();}).observe(document.querySelector('main'),{subtree:true,childList:true});window.addEventListener('resize',schedule);document.addEventListener('click',schedule);schedule();}
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+ window.ScreenFit={refresh};
+})();
 start();
 </script></body></html>
