@@ -1628,26 +1628,65 @@ body[data-source-mode=public] #page-comms,body[data-source-mode=public] #page-wo
 .map-credits-about{margin-top:18px;padding-top:14px;border-top:1px solid #dce6ee}.map-credits-about h3{font-size:17px;color:#214b69;margin:0 0 10px}.map-credits-about p{font-size:13px;line-height:1.7;margin:5px 0}
 
 /* Apply to every native select, including dynamically created dialog fields. */
-select{font-size:16px!important;line-height:1.4!important;color-scheme:light}
-.vessel-camera-toolbar select{font-size:17px!important}
-select option,select optgroup{font-family:var(--sans,"Segoe UI",Arial,sans-serif)!important;font-size:var(--dropdown-option-font,24px)!important;font-weight:500!important;line-height:1.5!important;color:#143c59!important;background:#fff!important;padding:8px 12px!important}
+select{font-size:var(--dropdown-control-font,16px)!important;line-height:1.4!important;color-scheme:light}
+.vessel-camera-toolbar select{font-size:var(--dropdown-control-font,16px)!important;font-weight:500!important}
+select option,select optgroup{font-family:var(--sans,"Segoe UI",Arial,sans-serif)!important;font-size:var(--dropdown-option-font,16px)!important;font-weight:500!important;line-height:1.5!important;color:#143c59!important;background:#fff!important;padding:8px 12px!important}
 select optgroup{font-weight:700!important}
 select:focus-visible{outline:3px solid #6da9dc;outline-offset:2px}
-@media(max-width:767px),(max-width:1000px) and (max-height:500px){select,.vessel-camera-toolbar select{font-size:16px!important;min-height:44px!important}select option,select optgroup{font-size:24px!important}}
+@media(max-width:767px),(max-width:1000px) and (max-height:500px){select,.vessel-camera-toolbar select{font-size:var(--dropdown-control-font,16px)!important;min-height:44px!important}select option,select optgroup{font-size:16px!important}}
 /* Progressive enhancement: supported browsers render the native picker in the
  * untransformed top layer, so option text and tap targets stay a readable size.
  * Older browsers retain the native menu and canvas font compensation above.
  */
 @supports(appearance:base-select){
  select,select::picker(select){appearance:base-select}
- select::picker(select){font-family:var(--sans,"Segoe UI",Arial,sans-serif);font-size:24px!important;line-height:1.5;color:#143c59;background:#fff;border:1px solid #abc4d5;border-radius:9px;box-shadow:0 8px 28px #15374d2b;padding:5px;min-width:max(280px,anchor-size(width));max-width:calc(100vw - 24px);max-height:min(480px,65vh);overflow-y:auto;margin-block:5px;scrollbar-width:thin}
- select option,select optgroup{font-size:24px!important;line-height:1.5!important}
- select option{min-height:60px;padding:12px 18px!important;white-space:normal;border-radius:5px;gap:12px;align-items:center;cursor:pointer}
+ select::picker(select){font-family:var(--sans,"Segoe UI",Arial,sans-serif);font-size:16px!important;line-height:1.5;color:#143c59;background:#fff;border:1px solid #abc4d5;border-radius:9px;box-shadow:0 8px 28px #15374d2b;padding:5px;min-width:max(280px,anchor-size(width));max-width:calc(100vw - 24px);max-height:min(480px,65vh);overflow-y:auto;margin-block:5px;scrollbar-width:thin}
+ select option,select optgroup{font-size:16px!important;line-height:1.5!important}
+ select option{min-height:44px;padding:10px 14px!important;white-space:normal;border-radius:5px;gap:12px;align-items:center;cursor:pointer}
  select option:hover,select option:focus-visible{background:#edf5fc!important;color:#123e60!important;outline:none}
- select option:checked{background:#e5f1fc!important;color:#075b95!important;font-weight:600!important}
+ select option:checked{background:#e5f1fc!important;color:#075b95!important;font-weight:500!important}
  select option:disabled{color:#7c8c98!important;background:#f5f7f9!important;cursor:not-allowed}
  select optgroup{padding:6px!important}
  select::picker-icon{color:#54758e;flex:none;margin-inline-start:8px}
+}
+
+/* Shared UI icon scale. Only controls and named icon slots are affected;
+   map geometry, chart SVGs, logos and media retain their own dimensions. */
+:root{--ui-icon-inline:16px;--ui-icon-control:18px;--ui-icon-feature:22px;--ui-icon-navigation:24px}
+#app-frame button svg:not(.asset-glyph),#modal button svg{
+ width:var(--ui-icon-control)!important;height:var(--ui-icon-control)!important;
+ min-width:var(--ui-icon-control);max-width:var(--ui-icon-control);max-height:var(--ui-icon-control);
+ flex:0 0 auto!important;display:block;stroke-width:1.8
+}
+#app-frame nav button svg:not(.asset-glyph){
+ width:var(--ui-icon-navigation)!important;height:var(--ui-icon-navigation)!important;
+ min-width:var(--ui-icon-navigation);max-width:var(--ui-icon-navigation);max-height:var(--ui-icon-navigation)
+}
+#app-frame :is(.flow-icon,.work-step-icon) svg,#modal :is(.slack-channel-icon,.slack-message-avatar) svg{
+ width:var(--ui-icon-feature)!important;height:var(--ui-icon-feature)!important;
+ min-width:var(--ui-icon-feature);max-width:var(--ui-icon-feature);max-height:var(--ui-icon-feature);flex:none
+}
+#app-frame :is(.decision-action,.vessel-camera-record button)>svg:last-child,
+#app-frame .vessel-camera-context svg,#app-frame .vessel-camera-count svg,
+#app-frame .search-input svg,#modal .notification-incident>button svg{
+ width:var(--ui-icon-inline)!important;height:var(--ui-icon-inline)!important;
+ min-width:var(--ui-icon-inline);max-width:var(--ui-icon-inline);max-height:var(--ui-icon-inline);flex:none
+}
+/* Preserve prominent spatial markers; they are map symbols, not toolbar icons. */
+#app-frame :is(.online-asset-pin,.source-recording-pin) svg{
+ width:24px!important;height:24px!important;min-width:24px;max-width:24px;max-height:24px
+}
+#app-frame .vessel-multi-expand>span,#app-frame .notification-channel i{
+ display:inline-flex;align-items:center;justify-content:center;
+ width:16px;height:16px;flex:0 0 16px;font-size:16px!important;font-weight:500;line-height:1!important
+}
+#app-frame .report-flow>i{font-size:18px!important;line-height:1;font-style:normal}
+#app-frame .work-step:not(:last-child)::after{font-size:16px;line-height:1}
+#app-frame .map-tools button:is(#map-zoom-in,#map-zoom-out){font-size:22px!important;line-height:1!important}
+/* Leave the touch target generous while keeping the glyph compact. */
+#app-frame button.icon-button,#modal button.icon-button{display:inline-flex;align-items:center;justify-content:center;min-width:36px;min-height:36px}
+@media(max-width:767px),(max-width:1000px) and (max-height:500px){
+ #app-frame button.icon-button,#modal button.icon-button{min-width:44px;min-height:44px}
 }
 
 </style></head><body data-source-mode="demo"><div id="stage"><div id="app-frame">
@@ -4187,14 +4226,14 @@ function start(){if(publicSourceMode()){running=false;startPublicSource();return
  */
 (function installDropdownReadability(){
  'use strict';
- const target=24;
+ const target=16;
  let last='';
  function refresh(){
   const frame=document.getElementById('app-frame');if(!frame)return;
   const width=frame.offsetWidth,shown=frame.getBoundingClientRect().width;
-  const scale=width>0&&shown>0?Math.min(1,Math.max(.25,shown/width)):1;
+  const scale=width>0&&shown>0?Math.max(.25,shown/width):1;
   const size=(target/scale).toFixed(2)+'px';
-  if(size!==last){frame.style.setProperty('--dropdown-option-font',size);last=size;}
+  if(size!==last){frame.style.setProperty('--dropdown-option-font',size);frame.style.setProperty('--dropdown-control-font',size);last=size;}
  }
  if(typeof resizePresentation==='function'){
   const original=resizePresentation;
@@ -4206,6 +4245,8 @@ function start(){if(publicSourceMode()){running=false;startPublicSource();return
  refresh();
  window.DropdownReadability={refresh,targetOptionPixels:target};
 })();
+
+/* Icon dimensions are resolved by scoped CSS; no render loop or DOM observer. */
 
 start();
 </script></body></html>
