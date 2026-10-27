@@ -1628,12 +1628,12 @@ body[data-source-mode=public] #page-comms,body[data-source-mode=public] #page-wo
 .map-credits-about{margin-top:18px;padding-top:14px;border-top:1px solid #dce6ee}.map-credits-about h3{font-size:17px;color:#214b69;margin:0 0 10px}.map-credits-about p{font-size:13px;line-height:1.7;margin:5px 0}
 
 /* Apply to every native select, including dynamically created dialog fields. */
-select{font-size:16px!important;line-height:1.4!important;color-scheme:light}
-.vessel-camera-toolbar select{font-size:16px!important;font-weight:500!important}
-select option,select optgroup{font-family:var(--sans,"Segoe UI",Arial,sans-serif)!important;font-size:16px!important;font-weight:500!important;line-height:1.5!important;color:#143c59!important;background:#fff!important;padding:8px 12px!important}
+select{font-size:var(--type-field,14px)!important;line-height:1.4!important;color-scheme:light}
+.vessel-camera-toolbar select{font-size:var(--type-field,14px)!important;font-weight:500!important}
+select option,select optgroup{font-family:var(--sans,"Segoe UI",Arial,sans-serif)!important;font-size:var(--type-field,14px)!important;font-weight:500!important;line-height:1.5!important;color:#143c59!important;background:#fff!important;padding:8px 12px!important}
 select optgroup{font-weight:700!important}
 select:focus-visible{outline:3px solid #6da9dc;outline-offset:2px}
-@media(max-width:767px),(max-width:1000px) and (max-height:500px){select,.vessel-camera-toolbar select{font-size:16px!important;min-height:44px!important}select option,select optgroup{font-size:16px!important}}
+@media(max-width:767px),(max-width:1000px) and (max-height:500px){select,.vessel-camera-toolbar select{font-size:var(--type-field,14px)!important;min-height:44px!important}select option,select optgroup{font-size:var(--type-field,14px)!important}}
 /* Progressive enhancement: supported browsers render the native picker in the
  * untransformed top layer, so option text and tap targets stay a readable size.
  * Older browsers retain the native menu and canvas font compensation above.
@@ -1653,7 +1653,7 @@ select:focus-visible{outline:3px solid #6da9dc;outline-offset:2px}
 
 /* Shared UI icon scale. Only controls and named icon slots are affected;
    map geometry, chart SVGs, logos and media retain their own dimensions. */
-:root{--ui-icon-inline:16px;--ui-icon-control:18px;--ui-icon-feature:22px;--ui-icon-navigation:24px;--ui-icon-marker:24px;--ui-icon-hero:32px}
+:root{--ui-icon-inline:16px;--ui-icon-control:18px;--ui-icon-feature:20px;--ui-icon-navigation:22px;--ui-icon-marker:24px;--ui-icon-hero:28px}
 #app-frame :where(button) svg:not(.asset-glyph),#modal button svg{
  width:var(--ui-icon-control)!important;height:var(--ui-icon-control)!important;
  min-width:var(--ui-icon-control);max-width:var(--ui-icon-control);max-height:var(--ui-icon-control);
@@ -1853,7 +1853,7 @@ body[data-layout=desktop] #page-overview[data-command-view=overview] .camera-med
 
 /* Canonical type roles, shared by every operational page and dialog.
    Sizes are canvas units: the complete presentation scales as one composition. */
-:root{--type-page:28px;--type-section:18px;--type-body:14px;--type-field:16px;--type-caption:12px;--type-metric:28px;--weight-normal:400;--weight-label:600;--weight-heading:700;--text-secondary:#526a7b}
+:root{--type-page:24px;--type-section:16px;--type-body:14px;--type-field:14px;--type-caption:12px;--type-metric:24px;--weight-normal:400;--weight-label:500;--weight-heading:650;--text-secondary:#526a7b}
 #app-frame main,#modal{font-family:var(--sans);font-size:var(--type-body);line-height:1.4}
 #app-frame main h1{font-size:var(--type-page)!important;line-height:1.2!important;font-weight:var(--weight-heading)!important}
 #app-frame main :is(h2,h3),#modal :is(h2,h3){font-size:var(--type-section)!important;line-height:1.3!important;font-weight:var(--weight-heading)!important}
@@ -1872,7 +1872,7 @@ body[data-layout=desktop] #page-overview[data-command-view=overview] .camera-med
 #app-frame main :is(.report-panel-heading>b,.report-email-controls>div>b,.notification-strip-head b){font-size:var(--type-section)!important;line-height:1.3!important}
 #app-frame main :is(.slack-entry-title b,.signal-journey button b,.vessel-camera-footer button span,.decision-action span){font-size:var(--type-body)!important}
 #app-frame #selected-summary b{font-size:var(--type-page)!important}
-#app-frame .decision-comparison strong small{font-size:24px!important}
+#app-frame .decision-comparison strong small{font-size:18px!important}
 #app-frame .decision-limit b{font-size:var(--type-section)!important}
 #app-frame main .status-help{font-size:14px!important;font-weight:600!important}
 #app-frame .screen-pager,#app-frame .report-fit-pager{font-size:var(--type-caption)!important}
@@ -1927,10 +1927,59 @@ body[data-layout=desktop] #page-comms .comms-chain h2{padding-right:14px}
 /* The global Demo label is redundant with specific simulation labels. */
 #app-frame header .data-context{display:none!important}
 
+/* Balanced visual density: reduce emphasis, retain reading size and add breathing room. */
+#app-frame header #header-route{font-size:20px;font-weight:650}
+#app-frame .decision-comparison strong{font-size:32px!important;line-height:1.15}
+#app-frame main :is(.form-label,label){font-size:13px!important}
+#app-frame main :is(.badge,.notification-auto,.flow-owner-label,.work-actor){font-weight:600!important}
+#app-frame main :is(.work-step>b,.notification-channel b,.vessel-multi-expand b,.vessel-multiview-title b),#app-frame #signal-journey button b{font-size:13px!important;font-weight:500!important}
+#app-frame .decision-action span{font-size:14px!important;font-weight:500}
+#app-frame main td{font-weight:400}
+body[data-layout=desktop] #page-assets .table-surface td{padding:10px 14px}
+body[data-layout=desktop] #page-work .work-step{padding:12px;column-gap:8px}
+body[data-layout=desktop] #work-analysis{padding:14px 16px;gap:10px 20px}
+body[data-layout=desktop] #page-work .work-grid{gap:18px}
+body[data-layout=desktop] #page-work .work-detail{padding:16px 18px}
+body[data-layout=desktop] #page-reports .report-controls{padding:16px}
+body[data-layout=desktop] #page-reports .report-layout{gap:18px}
+body[data-layout=desktop] #page-reports .report-result-head{padding:14px 18px}
+body[data-layout=desktop] #page-reports .report-email-controls{padding:14px 18px;gap:7px}
+body[data-layout=desktop] #page-comms .comms-chain>div{padding:12px 14px}
+body[data-layout=desktop] #alert-notifications-comms{padding:12px 16px}
+body[data-layout=desktop] #page-comms .comms-chain h2,body[data-layout=desktop] #page-comms .notification-strip-head b{font-size:15px!important;font-weight:600!important}
+body[data-layout=desktop] #page-overview .vessel-camera-toolbar label{font-size:13px!important}
+body[data-layout=mobile]{--type-field:16px}
+
+body[data-layout=desktop] #page-reports .report-panel-heading{margin-bottom:12px}
+
+/* One page guide in the consistent header position; action steps remain visible. */
+body[data-layout=desktop] #page-comms{grid-template-rows:60px 58px 160px 0px 42px 70px 42px minmax(0,1fr)}
+body[data-layout=desktop] #page-comms .comms-try{grid-row:5}
+body[data-layout=desktop] #page-comms .comms-payload{grid-row:6}
+body[data-layout=desktop] #page-comms .trace-heading{grid-row:7}
+body[data-layout=desktop] #page-comms .trace-scroll{grid-row:8}
+#header-route .context-help{margin-inline-start:9px}
+
+/* Consistent separation between headings, data blocks and the next action. */
+#page-reports .report-panel-heading{margin-bottom:16px;align-items:center}
+body[data-layout=desktop] #page-reports .report-panel-heading{margin-bottom:16px;align-items:center}
+body[data-layout=desktop] #page-reports .report-controls>label:not(.report-upload):not(.report-coverage){margin:16px 0 8px}
+body[data-layout=desktop] #page-reports .report-template-heading{margin:16px 0 8px}
+body[data-layout=desktop] #page-reports .report-upload{margin:16px 0 12px}
+body[data-layout=desktop] #page-reports .report-coverage{margin-top:12px}
+body[data-layout=desktop] #page-reports .report-schema-open{margin-top:12px}
+body[data-layout=desktop] #page-work .issue-heading{padding-bottom:10px;margin-bottom:10px}
+body[data-layout=desktop] #page-work .work-condition{padding:8px 0 10px;margin-bottom:12px}
+body[data-layout=desktop] #page-work .work-detail .form-label{margin-top:12px;margin-bottom:8px}
+body[data-layout=desktop] #page-work #record-inspection{margin-top:10px}
+body[data-layout=desktop] #page-work #close-work{margin-top:12px}
+body[data-layout=desktop] #page-comms{row-gap:12px}
+body[data-layout=desktop] #alert-notifications-comms{margin-bottom:0}
+
 /* Explanatory prose is available beside its heading, without obscuring live data. */
 .context-help-source{display:none!important}
-#app-frame main button.context-help,#modal button.context-help{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;width:22px;height:22px;min-width:22px;min-height:22px;padding:0;margin-inline-start:7px;border:1px solid #87a8c0;border-radius:50%;background:#fff;color:#316784;font:600 14px/1 var(--sans)!important;flex:0 0 22px;cursor:help}
-#app-frame main button.context-help:hover,#app-frame main button.context-help:focus-visible{background:#eaf4ff;border-color:#176baf;color:#07558b;outline-offset:3px}
+#app-frame button.context-help,#modal button.context-help{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;width:22px;height:22px;min-width:22px;min-height:22px;padding:0;margin-inline-start:7px;border:1px solid #87a8c0;border-radius:50%;background:#fff;color:#316784;font:600 14px/1 var(--sans)!important;flex:0 0 22px;cursor:help}
+#app-frame button.context-help:hover,#app-frame button.context-help:focus-visible{background:#eaf4ff;border-color:#176baf;color:#07558b;outline-offset:3px}
 #context-help-tooltip{position:fixed;z-index:10000;max-width:min(360px,calc(100vw - 24px));padding:12px 15px;border:1px solid #c7dbe9;border-radius:8px;background:#12364b;color:#fff;font:14px/1.5 var(--sans,"Segoe UI",sans-serif);box-shadow:0 6px 22px #12364b30;overflow-wrap:anywhere;pointer-events:none}
 body[data-layout=mobile] #app-frame main button.context-help{width:28px;height:28px;min-width:28px;min-height:28px;flex-basis:28px}
 
@@ -4469,13 +4518,14 @@ function start(){if(publicSourceMode()){running=false;startPublicSource();return
  * Match picker typography to the scaled field, without changing native interaction. */
 (function installDropdownReadability(){
  'use strict';
- const target=16;
+ const target=14;
  let last='';
  function refresh(){
   const frame=document.getElementById('app-frame');if(!frame)return;
   const width=frame.offsetWidth,shown=frame.getBoundingClientRect().width;
   const scale=width>0&&shown>0?Math.max(.25,shown/width):1;
-  const size=(target*scale).toFixed(2)+'px';
+  const base=document.body.dataset.layout==='mobile'?16:target;
+  const size=(base*scale).toFixed(2)+'px';
   if(size!==last){frame.style.setProperty('--dropdown-picker-font',size);frame.style.setProperty('--dropdown-picker-row',Math.max(44,44*scale).toFixed(2)+'px');last=size;}
  }
  if(typeof resizePresentation==='function'){
@@ -4559,7 +4609,8 @@ function start(){if(publicSourceMode()){running=false;startPublicSource();return
 const records=new WeakMap();let pending=false,current=null,tip;
 const rules=[
  ['.decision-panel>p',e=>e.parentElement.querySelector('.decision-heading h2')],
- ['.page-heading p',e=>e.closest('.page-heading').querySelector('h1')],
+ ['#comms-explanation',e=>document.querySelector('#page-comms .comms-chain>div:last-of-type h2')],
+ ['.comms-try>small',e=>e.parentElement.querySelector('b')],
  ['.report-basis-copy',e=>e.parentElement.querySelector('.report-panel-heading>b')],
  ['.report-format-note',e=>e.parentElement.querySelector('.report-upload>b')],
  ['.report-ready-state>p',e=>e.parentElement.querySelector('b')],
@@ -4567,7 +4618,14 @@ const rules=[
 ];
 function hide(){if(current){current.removeAttribute('aria-describedby');current=null;}if(tip)tip.hidden=true;}
 function show(button){const content=button._helpSource?.textContent.trim();if(!content)return;current=button;tip.textContent=content;tip.hidden=false;button.setAttribute('aria-describedby',tip.id);const r=button.getBoundingClientRect(),box=tip.getBoundingClientRect();const x=Math.max(12,Math.min(r.left,window.innerWidth-box.width-12));const y=r.bottom+8+box.height<window.innerHeight-12?r.bottom+8:Math.max(12,r.top-box.height-8);tip.style.left=x+'px';tip.style.top=y+'px';}
-function refresh(){pending=false;if(current&&!current.isConnected)hide();for(const [selector,anchor] of rules){document.querySelectorAll('main '+selector).forEach(source=>{const host=anchor(source);if(!host||!source.textContent.trim())return;let button=records.get(source);if(button?.isConnected){const label=document.documentElement.lang==='ms'?'Penjelasan':'Explanation';if(button.getAttribute('aria-label')!==label)button.setAttribute('aria-label',label);return;}button=document.createElement('button');button.type='button';button.className='context-help';button.textContent='!';button.setAttribute('aria-label',document.documentElement.lang==='ms'?'Penjelasan':'Explanation');button._helpSource=source;source.classList.add('context-help-source');source.setAttribute('aria-hidden','true');host.append(button);records.set(source,button);});}}
+function pageGuide(){
+ const page=document.querySelector('main .page:not([hidden])'),heading=document.getElementById('header-route');if(!page||!heading)return;
+ document.querySelectorAll('main .page-heading p').forEach(p=>{p.classList.add('context-help-source');p.setAttribute('aria-hidden','true');});
+ const ms=document.documentElement.lang==='ms';let source=page.querySelector('.page-heading p');
+ if(!source){source=document.createElement('p');source.textContent=ms?'Pilih aset pada peta untuk melihat kamera, bacaan terkini dan aliran pemprosesan automatik hingga tindakan manusia.':'Select an asset on the map to view cameras, current readings and the flow from automatic processing to human action.';}
+ let b=heading.querySelector('.context-help');if(!b){b=document.createElement('button');b.type='button';b.className='context-help';b.textContent='!';heading.append(b);}b._helpSource=source;b.setAttribute('aria-label',ms?'Panduan halaman':'Page guide');
+}
+function refresh(){pending=false;pageGuide();if(current&&!current.isConnected)hide();for(const [selector,anchor] of rules){document.querySelectorAll('main '+selector).forEach(source=>{const host=anchor(source);if(!host||!source.textContent.trim())return;let button=records.get(source);if(button?.isConnected){const label=document.documentElement.lang==='ms'?'Penjelasan':'Explanation';if(button.getAttribute('aria-label')!==label)button.setAttribute('aria-label',label);return;}button=document.createElement('button');button.type='button';button.className='context-help';button.textContent='!';button.setAttribute('aria-label',document.documentElement.lang==='ms'?'Penjelasan':'Explanation');button._helpSource=source;source.classList.add('context-help-source');source.setAttribute('aria-hidden','true');host.append(button);records.set(source,button);});}}
 function schedule(){if(!pending){pending=true;requestAnimationFrame(refresh);}}
 function init(){tip=document.createElement('div');tip.id='context-help-tooltip';tip.role='tooltip';tip.hidden=true;document.body.append(tip);new MutationObserver(schedule).observe(document.querySelector('main'),{childList:true,subtree:true});document.addEventListener('pointerover',e=>{const b=e.target.closest?.('.context-help');if(b)show(b);});document.addEventListener('pointerout',e=>{if(e.target.closest?.('.context-help'))hide();});document.addEventListener('focusin',e=>{if(e.target.matches?.('.context-help'))show(e.target);});document.addEventListener('focusout',e=>{if(e.target.matches?.('.context-help'))hide();});document.addEventListener('click',e=>{const b=e.target.closest?.('.context-help');if(b){e.preventDefault();e.stopPropagation();show(b);}else hide();});document.addEventListener('keydown',e=>{if(e.key==='Escape')hide();});window.addEventListener('resize',hide);document.addEventListener('scroll',hide,true);refresh();}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
