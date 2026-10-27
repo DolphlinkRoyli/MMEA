@@ -27,7 +27,21 @@ https://commons.wikimedia.org/wiki/File:DJI_Phantom_3_Pro_-_Langkawi_,Malaysia.w
 CC BY 3.0 â€” https://creativecommons.org/licenses/by/3.0/
 Continuous 20-second excerpt from 88â€“108 seconds of the 200.834-second source recording. Only empty baked-in black margins were removed using crop x=0, y=86, width=1280, height=550, conservatively preserving all active image pixels detected across all 601 source frames. Re-encoded as 1280 Ã— 550 H.264. Original image geometry and chronology preserved; no stretch or overlays added.
 
-media/vessel-bow-simulated.mp4
-media/vessel-aft-simulated.mp4
-media/vessel-port-simulated.mp4
-Created for this demonstration on 2026-10-27 from AI-generated patrol-boat camera illustrations. Synthetic scenes with subtle camera-motion animation; these are not recordings from APMM vessels or live CCTV. Three shared visual angles represent the configurable virtual onboard camera channels. Silent H.264, 1280 x 720, 24 fps, 10 seconds, fast-start MP4. No text or branding overlays are burned into the images.
+vessel-bow-recorded.mp4
+LayG Traveller
+https://www.pexels.com/video/the-bow-of-a-boat-in-the-ocean-20237990/
+Pexels License — https://www.pexels.com/license/
+Real recorded footage. Full 72.07-second source recording, original chronology and playback speed preserved. Re-encoded to silent H.264 1280x720 fast-start MP4 for website delivery; no generated frames or burned-in text. Virtual demonstration camera assignment, not an APMM camera recording. No endorsement is implied.
+
+vessel-aft-recorded.mp4
+The Element
+https://www.pexels.com/video/wake-produce-by-a-motor-boat-in-the-sea-3184535/
+Pexels License — https://www.pexels.com/license/
+Real recorded footage. Full 42.77-second source recording, original chronology and playback speed preserved. Re-encoded to silent H.264 1280x720 fast-start MP4 for website delivery; no generated frames or burned-in text. Virtual demonstration camera assignment, not an APMM camera recording. No endorsement is implied.
+
+vessel-port-recorded.mp4
+LayG Traveller
+https://www.pexels.com/video/the-view-from-the-back-of-a-boat-on-a-lake-20237998/
+Pexels License — https://www.pexels.com/license/
+Real recorded footage. Full 50.97-second source recording, original chronology and playback speed preserved. Re-encoded to silent H.264 1280x720 fast-start MP4 for website delivery; no generated frames or burned-in text. Virtual demonstration camera assignment, not an APMM camera recording. No endorsement is implied.
+

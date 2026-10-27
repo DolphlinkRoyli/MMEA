@@ -1330,10 +1330,12 @@ body[data-source-mode=public] #page-comms,body[data-source-mode=public] #page-wo
 /* Vessel cameras share the existing map, player and asset record. */
 .vessel-camera-toolbar-shell[hidden],.vessel-camera-footer[hidden]{display:none!important}
 .vessel-camera-toolbar-shell{flex:none;margin:0 0 10px;min-width:0}
-.vessel-camera-toolbar{display:grid;grid-template-columns:90px minmax(0,1fr) 34px;gap:7px;align-items:center;min-width:0}
-.vessel-camera-toolbar>label{font-size:12px;line-height:1.3;color:#536d82;font-weight:600}
-.vessel-camera-toolbar select{width:100%;min-width:0;min-height:36px;padding:7px 10px;font-size:13px;color:#103c60;border:1px solid #cbdae6;background:#fff;border-radius:6px}
-.vessel-camera-config{padding:7px;min-width:34px;min-height:36px;justify-content:center;border-color:#cbdae6}
+.vessel-camera-toolbar{display:grid;grid-template-columns:110px minmax(0,1fr) 40px;gap:7px;align-items:center;min-width:0}
+.vessel-camera-toolbar>label{font-size:15px;line-height:1.3;color:#345a74;font-weight:600}
+.vessel-camera-toolbar select{width:100%;min-width:0;min-height:42px;padding:8px 10px;font-size:17px;line-height:1.35;font-weight:600;color:#103c60;border:1px solid #a9bfd0;background:#fff;border-radius:6px;color-scheme:light}
+.vessel-camera-toolbar select option{font-size:17px;font-weight:500;color:#103c60;background:#fff}
+.vessel-camera-toolbar select:focus-visible{outline:3px solid #79afe0;outline-offset:2px}
+.vessel-camera-config{padding:7px;min-width:40px;min-height:42px;justify-content:center;border-color:#a9bfd0}
 .vessel-camera-config svg{width:18px;height:18px}
 #page-overview[data-vessel-cameras=true] .camera-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin:0 0 10px;flex:none}
 #page-overview[data-vessel-cameras=true] .camera-tab{min-width:0;min-height:42px;padding:7px 5px;gap:5px;justify-content:center}
@@ -1394,10 +1396,10 @@ body[data-source-mode=public] #page-comms,body[data-source-mode=public] #page-wo
 .vessel-camera-record button>svg{width:21px;height:21px;flex:none}.vessel-camera-record button>svg:last-child{margin-left:auto}
 .vessel-camera-record button>span{display:grid;gap:3px}.vessel-camera-record small{font-size:11px;color:#5b7589}
 /* Focused vessel view: map left, one active channel right. */
-#page-overview[data-vessel-cameras=true][data-command-view=camera] .overview-grid{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);grid-template-rows:36px 36px minmax(0,1fr) 74px 96px;gap:10px 16px}
+#page-overview[data-vessel-cameras=true][data-command-view=camera] .overview-grid{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);grid-template-rows:42px 36px minmax(0,1fr) 74px 96px;gap:10px 16px}
 #page-overview[data-vessel-cameras=true][data-command-view=camera] .vessel-camera-toolbar-shell{grid-area:1/1/2/3;margin:0;max-width:550px}
-#page-overview[data-vessel-cameras=true][data-command-view=camera] .vessel-camera-toolbar{grid-template-columns:110px minmax(200px,1fr) 34px;gap:10px}
-#page-overview[data-vessel-cameras=true][data-command-view=camera] .vessel-camera-toolbar>label{grid-column:auto;font-size:13px}
+#page-overview[data-vessel-cameras=true][data-command-view=camera] .vessel-camera-toolbar{grid-template-columns:110px minmax(200px,1fr) 40px;gap:10px}
+#page-overview[data-vessel-cameras=true][data-command-view=camera] .vessel-camera-toolbar>label{grid-column:auto;font-size:15px}
 #page-overview[data-vessel-cameras=true][data-command-view=camera] .camera-tabs{grid-area:2/1/3/3;grid-template-columns:repeat(3,165px);justify-content:start;margin:0}
 #page-overview[data-vessel-cameras=true][data-command-view=camera] .camera-tab{min-height:39px}
 #page-overview[data-vessel-cameras=true][data-command-view=camera] .map-surface{grid-area:3/1/4/2}
@@ -1424,9 +1426,10 @@ body[data-source-mode=public] #page-comms,body[data-source-mode=public] #page-wo
 @media(max-width:767px),(max-width:1000px) and (max-height:500px){
  #page-overview[data-vessel-cameras=true] .vessel-camera-toolbar-shell{margin:0 0 12px;width:100%;max-width:none}
  #page-overview[data-vessel-cameras=true] .vessel-camera-toolbar{grid-template-columns:minmax(0,1fr) 40px;gap:7px 8px}
- #page-overview[data-vessel-cameras=true] .vessel-camera-toolbar>label{grid-column:1/-1;font-size:13px}
- #page-overview[data-vessel-cameras=true] .vessel-camera-toolbar select{font-size:14px;min-height:43px}
- #page-overview[data-vessel-cameras=true] .vessel-camera-config{min-height:43px}
+ #page-overview[data-vessel-cameras=true] .vessel-camera-toolbar>label{grid-column:1/-1;font-size:15px}
+ #page-overview[data-vessel-cameras=true] .vessel-camera-toolbar select{font-size:16px;min-height:44px}
+ #page-overview[data-vessel-cameras=true] .vessel-camera-toolbar select option{font-size:16px}
+ #page-overview[data-vessel-cameras=true] .vessel-camera-config{min-height:44px}
  #page-overview[data-vessel-cameras=true] .camera-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;width:100%;margin:0 0 13px;order:1;grid-area:auto}
  #page-overview[data-vessel-cameras=true] .camera-tab{min-height:56px;flex-direction:column;gap:5px;padding:7px 3px}
  #page-overview[data-vessel-cameras=true] .camera-tab b{font-size:12px}
@@ -1444,7 +1447,7 @@ body[data-source-mode=public] #page-comms,body[data-source-mode=public] #page-wo
  #page-overview[data-vessel-cameras=true][data-command-view=camera] .overview-grid{display:flex;flex-direction:column;gap:0}
  #page-overview[data-vessel-cameras=true][data-command-view=camera] .vessel-camera-toolbar-shell{order:0;width:calc(100% - 32px);margin:0 16px 12px;grid-area:auto}
  #page-overview[data-vessel-cameras=true][data-command-view=camera] .vessel-camera-toolbar{grid-template-columns:minmax(0,1fr) 40px;gap:7px 8px}
- #page-overview[data-vessel-cameras=true][data-command-view=camera] .vessel-camera-toolbar>label{grid-column:1/-1;font-size:13px}
+ #page-overview[data-vessel-cameras=true][data-command-view=camera] .vessel-camera-toolbar>label{grid-column:1/-1;font-size:15px}
  #page-overview[data-vessel-cameras=true][data-command-view=camera] .camera-tabs{order:1;width:calc(100% - 32px);margin:0 16px 13px;grid-template-columns:repeat(3,minmax(0,1fr));grid-area:auto}
  #page-overview[data-vessel-cameras=true][data-command-view=camera] .camera-media{order:2;width:calc(100% - 32px);margin:0 16px 18px;grid-area:auto;display:block;height:auto;max-height:none}
  #page-overview[data-vessel-cameras=true][data-command-view=camera] .camera-video-display{display:block;flex:none;aspect-ratio:16/9;height:auto}
@@ -3304,7 +3307,7 @@ function updateMotion(dt=0){
 function start(){if(publicSourceMode()){running=false;startPublicSource();return;}initialiseReferenceVideos();if(typeof INITIAL_DOCUMENTS!=='undefined'&&!documents.list().length){for(const reference of INITIAL_DOCUMENTS)documents.addDocument(reference.name,reference.text,reference.sourceClass);}setProfiles();makeEngine();if(typeof INITIAL_PRESENTATION_DATA!=='undefined'&&INITIAL_PRESENTATION_DATA)seedPresentationData();for(const a of assets)transmit(a);ready=true;initialiseIcons();initialiseMapInteractions();setLang('en');setMap('region');renderRuleFields();renderDocuments();renderSearchEmpty();document.querySelectorAll('.marker').forEach(el=>{el.addEventListener('click',()=>chooseAsset(el.dataset.asset));el.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();chooseAsset(el.dataset.asset);}});});document.addEventListener('keydown',event=>{if(event.key==='Escape')closeModal();if(event.key==='Tab'&&!$('modal').hidden){const stops=[...$('modal').querySelectorAll('button,a[href],input,select,textarea,[tabindex="0"]')].filter(el=>!el.disabled&&!el.hidden&&el.getClientRects().length);if(stops.length){const first=stops[0],last=stops[stops.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}}}});window.addEventListener('resize',resizePresentation);document.addEventListener('fullscreenchange',resizePresentation);resizePresentation();updateMotion();$('app-status').hidden=true;initialiseOnlineMap();const initialRoute=window.location?.hash?.slice(1);if(Object.hasOwn(routes,initialRoute||'')){if(initialRoute==='work')openWorkQueue();else navigate(initialRoute);}window.addEventListener('hashchange',()=>{const target=window.location?.hash?.slice(1);if(Object.hasOwn(routes,target||'')){if(target==='work')openWorkQueue();else navigate(target);}});requestAnimationFrame(frame);}
 /* Vessel cameras and notification previews — 2026-10-27. */
 /* Vessel camera relationships for this static demonstration.
- * Camera assignments, vessel positions and onboard camera imagery are simulated.
+ * Camera assignments and vessel positions are simulated; video is real licensed recorded footage.
  * Shore-camera recordings retain their separate source and attribution records.
  * The existing player is shared, so a hidden channel never keeps downloading.
  */
@@ -3312,11 +3315,11 @@ function start(){if(publicSourceMode()){running=false;startPublicSource();return
  'use strict';
  const channels=new Map(),selectedChannels=new Map(),playback=new Map();
  let fit='cover',serial=0;
- const positions=[['Bow','Haluan'],['Aft deck','Dek belakang'],['Port side','Sisi kiri']];
+ const positions=[['Bow','Haluan'],['Waterline','Garis air'],['Coastal view','Pemandangan pesisir']];
  const virtualSources=[
-  {id:'vessel-bow',title:'Virtual patrol vessel · bow',urls:['media/vessel-bow-simulated.mp4'],dimensions:[1280,720],generated:true,author:'Talktide demonstration',license:'Synthetic camera view'},
-  {id:'vessel-aft',title:'Virtual patrol vessel · aft deck',urls:['media/vessel-aft-simulated.mp4'],dimensions:[1280,720],generated:true,author:'Talktide demonstration',license:'Synthetic camera view'},
-  {id:'vessel-port',title:'Virtual patrol vessel · port side',urls:['media/vessel-port-simulated.mp4'],dimensions:[1280,720],generated:true,author:'Talktide demonstration',license:'Synthetic camera view'}
+  {id:'vessel-bow',title:'Recorded boat view · bow',urls:['media/vessel-bow-recorded.mp4'],dimensions:[1280,720],generated:false,recorded:true,seconds:72,author:'LayG Traveller',license:'Pexels License',licenseUrl:'https://www.pexels.com/license/',page:'https://www.pexels.com/video/the-bow-of-a-boat-in-the-ocean-20237990/'},
+  {id:'vessel-aft',title:'Recorded boat view · waterline',urls:['media/vessel-aft-recorded.mp4'],dimensions:[1280,720],generated:false,recorded:true,seconds:43,author:'The Element',license:'Pexels License',licenseUrl:'https://www.pexels.com/license/',page:'https://www.pexels.com/video/wake-produce-by-a-motor-boat-in-the-sea-3184535/'},
+  {id:'vessel-port',title:'Recorded boat view · coastal passage',urls:['media/vessel-port-recorded.mp4'],dimensions:[1280,720],generated:false,recorded:true,seconds:51,author:'LayG Traveller',license:'Pexels License',licenseUrl:'https://www.pexels.com/license/',page:'https://www.pexels.com/video/the-view-from-the-back-of-a-boat-on-a-lake-20237998/'}
  ];
  function initialise(){
   for(const vessel of assets.filter(a=>a.kind==='ship')){
@@ -3354,10 +3357,28 @@ function start(){if(publicSourceMode()){running=false;startPublicSource();return
  function countLabel(n){return tr(n===1?'camera':'cameras','kamera');}
  function selectedVessel(){return assets.find(a=>a.id===selected&&a.kind==='ship')||null;}
  function markup(){
-  const vessel=selectedVessel(),camera=currentChannel();if(!vessel||!camera)return '';
-  return '<div class="vessel-camera-toolbar"><label for="vessel-camera-vessel">'+esc(tr('Vessel cameras','Kamera kapal'))+'</label><select id="vessel-camera-vessel" onchange="VesselCameras.openCamera(this.value)">'+assets.filter(a=>a.kind==='ship').map(a=>'<option value="'+esc(a.id)+'" '+(a.id===vessel.id?'selected':'')+'>'+esc(a.id.replace(/^DEMO-/,''))+' · '+camerasFor(a.id).length+' '+esc(countLabel(camerasFor(a.id).length))+'</option>').join('')+'</select><button class="vessel-camera-config" onclick="VesselCameras.configure()" aria-label="'+esc(tr('Configure vessel cameras','Tetapkan kamera kapal'))+'">'+icon('settings')+'</button></div>';
+  return '<div class="vessel-camera-toolbar"><label id="vessel-camera-vessel-label" for="vessel-camera-vessel"></label><select id="vessel-camera-vessel" onchange="VesselCameras.selectVessel(this.value)"></select><button id="vessel-camera-config" class="vessel-camera-config" onclick="VesselCameras.configure()">'+icon('settings')+'</button></div>';
  }
- function put(id,html){const node=$(id);if(node&&node.innerHTML!==html)node.innerHTML=html;}
+ // Browser innerHTML serialization normalizes attributes/entities. Comparing it
+ // to the source string replaced the native select on every telemetry refresh,
+ // dismissing its open options list before the user could choose a vessel.
+ const renderedMarkup=new WeakMap();
+ function put(id,html){const node=$(id);if(node&&renderedMarkup.get(node)!==html){node.innerHTML=html;renderedMarkup.set(node,html);}}
+ function renderToolbar(vessel){
+  put('vessel-camera-toolbar',markup());
+  const select=$('vessel-camera-vessel'),label=$('vessel-camera-vessel-label'),config=$('vessel-camera-config');
+  label.textContent=tr('Vessel cameras','Kamera kapal');
+  config.setAttribute('aria-label',tr('Configure vessel cameras','Tetapkan kamera kapal'));
+  const options=assets.filter(a=>a.kind==='ship').map(a=>({id:a.id,label:a.id.replace(/^DEMO-/,'')+' · '+camerasFor(a.id).length+' '+countLabel(camerasFor(a.id).length)}));
+  const key=JSON.stringify(options),focused=document.activeElement===select;
+  // Keep the select node itself mounted. Defer even genuine option-list changes
+  // while its native menu is active; the next unfocused refresh applies them.
+  if(!focused&&select.dataset.vesselOptions!==key){
+   select.innerHTML=options.map(a=>'<option value="'+esc(a.id)+'">'+esc(a.label)+'</option>').join('');
+   select.dataset.vesselOptions=key;
+  }
+  if(!focused&&select.value!==vessel.id)select.value=vessel.id;
+ }
  function ensureToolbar(){
   if($('vessel-camera-toolbar'))return;
   const toolbar=document.createElement('div');toolbar.id='vessel-camera-toolbar';toolbar.className='vessel-camera-toolbar-shell';
@@ -3372,18 +3393,18 @@ function start(){if(publicSourceMode()){running=false;startPublicSource();return
   if(!vessel){$('camera-player').style.objectFit='';$('camera-player').style.objectPosition='';return;}
   $('page-overview').dataset.assetKind='ship';$('camera-tabs').hidden=false;$('asset-observations').hidden=true;$('domain-assets').hidden=true;
   $('camera-tabs').setAttribute('aria-label',tr('Cameras aboard selected vessel','Kamera di atas kapal terpilih'));
-  put('vessel-camera-toolbar',markup());
+  renderToolbar(vessel);
   renderStableButtons('camera-tabs',camerasFor(vessel.id).map(c=>'<button class="camera-tab '+(c.id===camera?.id?'active':'')+'" data-choice="'+esc(c.id)+'" aria-pressed="'+(c.id===camera?.id)+'" onclick="VesselCameras.selectCamera('+arg(c.id)+')"><span class="camera-tab-icon">'+icon('cctv')+'</span><span><b>'+esc(cameraLabel(c))+'</b><small>'+esc(c.id)+'</small></span></button>').join(''));
   $('camera-media').hidden=false;$('camera-video-id').textContent=vessel.id.replace(/^DEMO-/,'')+' · '+cameraLabel(camera);
-  $('camera-source-badge').textContent=tr('VIRTUAL CAMERA','KAMERA MAYA');
-  $('camera-player').setAttribute('aria-label',tr('Simulated onboard camera view: ','Paparan kamera kapal simulasi: ')+vessel.id+' · '+cameraLabel(camera));
+  $('camera-source-badge').textContent=tr('RECORDED · ','RAKAMAN · ')+videoItem().seconds+' s';
+  $('camera-player').setAttribute('aria-label',tr('Recorded footage for demo camera: ','Rakaman untuk kamera demo: ')+vessel.id+' · '+cameraLabel(camera));
   $('camera-player').style.objectFit=fit;$('camera-player').style.objectPosition=camera.objectPosition;
   $('camera-focused-view').textContent=tr(commandView==='camera'?'Map overview':'Camera workspace',commandView==='camera'?'Gambaran peta':'Ruang kerja kamera');
   $('camera-file-select').textContent=tr('Simulation details','Butiran simulasi');
-  $('camera-video-boundary').textContent=tr('Synthetic patrol-vessel camera view · not live surveillance','Paparan kamera kapal peronda sintetik · bukan pengawasan langsung');
+  $('camera-video-boundary').textContent=tr('Real recorded footage · demonstration camera assignment','Rakaman sebenar · penugasan kamera demonstrasi');
   $('camera-video-credit').hidden=true;
   const item=videoItem(),state=item?.playback;
-  $('camera-video-state').textContent=state==='playing'?tr('Virtual camera running','Kamera maya berjalan'):state==='error'?tr('Video unavailable · retry','Video tidak tersedia · cuba semula'):state==='blocked'||state==='ready'||state==='paused'?tr('Ready · press Play','Sedia · tekan Main'):state==='waiting'||state==='stalled'?tr('Buffering virtual camera','Menimbal kamera maya'):tr('Loading virtual camera…','Memuatkan kamera maya…');
+  $('camera-video-state').textContent=state==='playing'?tr('Recording playing','Rakaman dimainkan'):state==='error'?tr('Video unavailable · retry','Video tidak tersedia · cuba semula'):state==='blocked'||state==='ready'||state==='paused'?tr('Ready · press Play','Sedia · tekan Main'):state==='waiting'||state==='stalled'?tr('Buffering recording','Menimbal rakaman'):tr('Loading recording…','Memuatkan rakaman…');
   const issue=engine.state.alerts.findLast(a=>a.assetId===vessel.id&&a.status==='active');
   put('vessel-camera-footer','<span class="vessel-camera-context">'+(issue?'<button onclick="openIssue('+arg(issue.alertId)+')" class="vessel-camera-alert">'+icon('bell')+esc(tr('Vessel alert','Amaran kapal'))+'</button>':'<span>'+icon('ship')+esc(tr('Vessel linked','Kapal dipautkan'))+'</span>')+'</span><span class="vessel-camera-footer-actions"><button class="vessel-camera-workspace" onclick="setCommandView('+arg(commandView==='camera'?'overview':'camera')+')">'+esc(tr(commandView==='camera'?'Map overview':'Camera workspace',commandView==='camera'?'Gambaran peta':'Ruang kamera'))+'</button><button class="vessel-camera-fit" onclick="VesselCameras.toggleFit()" aria-pressed="'+(fit==='contain')+'">'+esc(tr(fit==='cover'?'Full frame':'Fill frame',fit==='cover'?'Bingkai penuh':'Penuh bingkai'))+'</button></span>');
   $('command-selection').textContent=vessel.id.replace(/^DEMO-/,'')+' · '+commandLocation(vessel)+' · '+camerasFor(vessel.id).length+' '+tr(camerasFor(vessel.id).length===1?'onboard camera':'onboard cameras','kamera kapal');
@@ -3414,6 +3435,13 @@ function start(){if(publicSourceMode()){running=false;startPublicSource();return
   if(cameraId){if(currentChannel(vessel.id)?.id!==cameraId&&cameraPlayerAsset===vessel.id)detachCameraPlayer();selectedChannels.set(vessel.id,cameraId);}
   closeModal();chooseAsset(vessel.id);setCommandView('camera');return true;
  }
+ function selectVessel(vesselId){
+  const vessel=vesselFor(vesselId);if(!vessel)return false;
+  const previousView=commandView;
+  chooseAsset(vessel.id);
+  if(previousView==='camera')setCommandView('camera');
+  return true;
+ }
  function addCamera(vesselId,label,referenceId){
   const vessel=vesselFor(vesselId),name=String(label||'').trim();
   if(!vessel||!name||name.length>40||!virtualSources.some(r=>r.id===referenceId))return null;
@@ -3430,7 +3458,7 @@ function start(){if(publicSourceMode()){running=false;startPublicSource();return
  function configure(vesselId=selected){
   const vessel=vesselFor(vesselId);if(!vessel)return;
   const list=camerasFor(vessel.id);
-  openModal(tr('Vessel camera configuration','Tetapan kamera kapal')+' · '+vessel.id.replace(/^DEMO-/,''),'<p class="vessel-camera-config-note">'+esc(tr('Assign one or more cameras to this vessel. Changes apply to this demonstration session.','Tetapkan satu atau lebih kamera kepada kapal ini. Perubahan digunakan dalam sesi demonstrasi ini.'))+'</p><div class="vessel-camera-config-list">'+list.map(c=>'<div><span>'+icon('cctv')+'<b>'+esc(cameraLabel(c))+'</b><small>'+esc(c.id)+'</small></span><button onclick="VesselCameras.removeConfigured('+arg(c.id)+')" '+(list.length<=1?'disabled':'')+'>'+esc(tr('Remove','Alih keluar'))+'</button></div>').join('')+'</div><label class="form-label" for="vessel-new-camera-name">'+esc(tr('Camera name','Nama kamera'))+'</label><input id="vessel-new-camera-name" maxlength="40" placeholder="'+esc(tr('Starboard deck','Dek kanan'))+'"><label class="form-label" for="vessel-new-camera-recording">'+esc(tr('Virtual camera view','Paparan kamera maya'))+'</label><select id="vessel-new-camera-recording">'+virtualSources.map(r=>'<option value="'+esc(r.id)+'">'+esc(r.title)+'</option>').join('')+'</select><div class="modal-actions"><button onclick="VesselCameras.saveConfigured('+arg(vessel.id)+')" '+(list.length>=8?'disabled':'')+'>'+esc(tr('Add camera','Tambah kamera'))+'</button><button class="primary" onclick="closeModal();VesselCameras.render()">'+esc(tr('Done','Selesai'))+'</button></div>');
+  openModal(tr('Vessel camera configuration','Tetapan kamera kapal')+' · '+vessel.id.replace(/^DEMO-/,''),'<p class="vessel-camera-config-note">'+esc(tr('Assign one or more cameras to this vessel. Changes apply to this demonstration session.','Tetapkan satu atau lebih kamera kepada kapal ini. Perubahan digunakan dalam sesi demonstrasi ini.'))+'</p><div class="vessel-camera-config-list">'+list.map(c=>'<div><span>'+icon('cctv')+'<b>'+esc(cameraLabel(c))+'</b><small>'+esc(c.id)+'</small></span><button onclick="VesselCameras.removeConfigured('+arg(c.id)+')" '+(list.length<=1?'disabled':'')+'>'+esc(tr('Remove','Alih keluar'))+'</button></div>').join('')+'</div><label class="form-label" for="vessel-new-camera-name">'+esc(tr('Camera name','Nama kamera'))+'</label><input id="vessel-new-camera-name" maxlength="40" placeholder="'+esc(tr('Starboard deck','Dek kanan'))+'"><label class="form-label" for="vessel-new-camera-recording">'+esc(tr('Camera recording','Rakaman kamera'))+'</label><select id="vessel-new-camera-recording">'+virtualSources.map(r=>'<option value="'+esc(r.id)+'">'+esc(r.title)+'</option>').join('')+'</select><div class="modal-actions"><button onclick="VesselCameras.saveConfigured('+arg(vessel.id)+')" '+(list.length>=8?'disabled':'')+'>'+esc(tr('Add camera','Tambah kamera'))+'</button><button class="primary" onclick="closeModal();VesselCameras.render()">'+esc(tr('Done','Selesai'))+'</button></div>');
  }
  function detailMarkup(vessel){return '<section class="vessel-camera-record"><h3>'+esc(tr('Onboard cameras','Kamera kapal'))+'</h3><p>'+esc(tr('Each channel follows the vessel on the map.','Setiap saluran mengikuti kapal pada peta.'))+'</p><div>'+camerasFor(vessel.id).map(c=>'<button onclick="VesselCameras.openCamera('+arg(vessel.id)+','+arg(c.id)+')">'+icon('cctv')+'<span><b>'+esc(cameraLabel(c))+'</b><small>'+esc(c.id)+'</small></span>'+icon('chevron-right')+'</button>').join('')+'</div></section>';}
  const originalVideoItem=selectedVideoItem;
@@ -3464,9 +3492,9 @@ function start(){if(publicSourceMode()){running=false;startPublicSource();return
  const originalDetail=assetDetail;
  assetDetail=function(){originalDetail();const vessel=selectedVessel();if(vessel){const body=$('modal-body'),section=document.createElement('div');section.innerHTML=detailMarkup(vessel);body.querySelector('.modal-actions')?.insertAdjacentElement('beforebegin',section);}};
  const originalSourceDialog=cameraSourceDialog;
- cameraSourceDialog=function(){const item=selectedVideoItem();if(!item?.simulated)return originalSourceDialog();openModal(tr('Simulated vessel camera','Kamera kapal simulasi'),'<p>'+esc(tr('The camera-to-vessel assignment and camera scene are simulated. This motion preview uses synthetic patrol-vessel imagery. It is not a live or actual onboard camera feed.','Penugasan kamera kepada kapal dan adegan kamera adalah simulasi. Pratonton gerakan ini menggunakan imejan kapal peronda sintetik. Ini bukan suapan kamera kapal langsung atau sebenar.'))+'</p><p><b>'+esc(item.title)+'</b><br>'+esc(item.author)+'</p><div class="modal-actions"><button class="primary" onclick="closeModal()">'+esc(tr('Return to camera','Kembali ke kamera'))+'</button></div>');};
+ cameraSourceDialog=function(){const item=selectedVideoItem();if(!item?.simulated)return originalSourceDialog();openModal(tr('Simulated vessel camera','Kamera kapal simulasi'),'<p>'+esc(tr('Real licensed boat footage, played at its original speed. Camera assignments and map positions are for demonstration; this is not a live APMM feed.','Rakaman bot sebenar berlesen, dimainkan pada kelajuan asal. Penugasan kamera dan kedudukan peta adalah untuk demonstrasi; ini bukan suapan langsung APMM.'))+'</p><p><b>'+esc(item.title)+'</b><br>'+esc(item.author)+'</p><p><a href="'+esc(item.page)+'" target="_blank" rel="noopener">'+esc(tr('Original recording','Rakaman asal'))+'</a> · <a href="'+esc(item.licenseUrl)+'" target="_blank" rel="noopener">'+esc(item.license)+'</a></p><div class="modal-actions"><button class="primary" onclick="closeModal()">'+esc(tr('Return to camera','Kembali ke kamera'))+'</button></div>');};
  document.addEventListener('visibilitychange',()=>{if(document.hidden&&cameraPlayerAsset&&vesselFor(cameraPlayerAsset))detachCameraPlayer();});
- window.VesselCameras={camerasFor,resolveVessel:vesselFor,openCamera,selectCamera,render,configure,addCamera,removeCamera,
+ window.VesselCameras={camerasFor,resolveVessel:vesselFor,openCamera,selectVessel,selectCamera,render,configure,addCamera,removeCamera,
   currentChannel,videoItem,sources:virtualSources.map(r=>({...r})),openFleet(){const vessel=assets.find(a=>a.kind==='ship');if(vessel)openCamera(vessel.id);},
   toggleFit(){fit=fit==='cover'?'contain':'cover';render();},
   saveConfigured(vesselId){const added=addCamera(vesselId,$('vessel-new-camera-name').value,$('vessel-new-camera-recording').value);if(!added){toast(tr('Enter a camera name. Up to eight cameras may be assigned to one vessel.','Masukkan nama kamera. Sehingga lapan kamera boleh ditetapkan kepada satu kapal.'));return;}if(cameraPlayerAsset===vesselId)detachCameraPlayer();selectedChannels.set(vesselId,added.id);configure(vesselId);renderCameraPanel();renderTable();},
